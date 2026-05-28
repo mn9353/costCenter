@@ -63,11 +63,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
+  padding: 6px 16px;
   background-color: var(--bg-color-main);
   border-bottom: 1px solid var(--border-color);
-  height: 48px;
+  min-height: 48px;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .filter-group {
@@ -188,62 +189,62 @@ input:checked + .slider:before {
   flex: 1;
   overflow: hidden;
   background-color: var(--bg-color-main);
-  padding: 16px;
+  padding: 8px 16px 16px;
   display: flex;
   flex-direction: column;
+  min-height: 0; /* Critical: allows flex children to shrink below content size */
 }
 
-/* Table scroll container for synchronized vertical scrolling of split tables */
+/* Table scroll container - vertical clip, horizontal clip (scroll is on grid itself) */
 .table-scroll-container {
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  width: 100%; /* Force full width of parent container */
-  height: 100%;
+  overflow: hidden;
+  min-height: 0;
   border: 1px solid var(--border-color);
   background-color: var(--bg-color-card);
+  display: flex;
+  flex-direction: column;
 }
 
 /* --- SPLIT GRID PANEL LAYOUT --- */
 .grid-split-container {
   display: flex;
-  width: 100%;
-  min-height: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden; /* Each pane scrolls independently, synced via JS */
   background-color: transparent;
-  overflow: hidden;
   align-items: stretch;
 }
 
-/* Left Pane (Metadata) - Static, no scroll but has scrollbar space for layout alignment */
+/* Left Pane (Metadata) - Fixed width, vertical scroll synced via JS */
 .metadata-pane {
   flex: 0 0 990px;
   width: 990px;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: auto;   /* Vertical scroll — synced with scenarios pane */
+  overflow-x: hidden; /* No horizontal scroll */
   border-right: 2px solid var(--border-color-active);
   background-color: var(--bg-color-card);
   display: flex;
   flex-direction: column;
+  scrollbar-width: none; /* Firefox — hide scrollbar */
 }
 
-/* Right Pane (Scenarios) - Scrollable horizontally */
+.metadata-pane::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Right Pane (Scenarios) - Horizontal scroll + vertical scroll synced via JS */
 .scenarios-pane {
   flex: 1 1 auto;
-  min-width: 0; /* Allow the pane to shrink and trigger horizontal scrollbar on smaller screens */
-  overflow-x: scroll;
-  overflow-y: hidden;
+  min-width: 0;
+  overflow-x: auto;    /* ← Horizontal scroll lives HERE only */
+  overflow-y: auto;    /* ← Vertical scroll, synced with metadata pane */
   background-color: var(--bg-color-card);
   display: flex;
   flex-direction: column;
+  scrollbar-width: none; /* Firefox — hide scrollbar */
 }
 
-/* Hide scrollbars visually but retain scroll capability across Firefox and WebKit */
-.metadata-pane,
-.scenarios-pane {
-  scrollbar-width: none; /* Firefox */
-}
-
-.metadata-pane::-webkit-scrollbar,
 .scenarios-pane::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
@@ -257,11 +258,12 @@ input:checked + .slider:before {
 
 .metadata-table {
   width: 990px;
+  min-width: 990px;
   flex: 1 0 auto;
 }
 
 .scenarios-table {
-  width: max-content; /* Prevents squeezing columns, forces scrollbar */
+  width: max-content; /* Only as wide as actual columns — no infinite loop */
   flex: 1 0 auto;
 }
 
@@ -278,11 +280,19 @@ input:checked + .slider:before {
   background-color: var(--bg-color-main);
 }
 
-/* Sticky row headers vertically */
+/* Sticky column headers - stick to top of the scroll container */
 .cost-table thead th {
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+/* Sticky total footer - always visible at the bottom of the scroll container */
+.cost-table tfoot tr {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.45);
 }
 
 .header-super, .header-super th {
@@ -489,10 +499,14 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   padding: 2px;
+  width: 20px;
+  height: 20px;
 }
 
-.btn-expand:hover {
+.btn-expand:hover,
+.btn-expand:focus-visible {
   color: var(--accent-teal);
+  outline: none;
 }
 
 .chevron-icon {
@@ -592,12 +606,9 @@ input:checked + .slider:before {
   color: var(--text-color-secondary);
 }
 
-/* Summary Footer row - Visually separated, thick borders, floats over content */
+/* Summary Footer row - always pinned via sticky tfoot tr above */
 .cost-table tfoot {
-  position: sticky;
-  bottom: 0;
-  z-index: 5;
-  box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.45);
+  position: relative;
 }
 
 .total-row, .total-row td {
@@ -1249,5 +1260,4 @@ input:checked + .slider:before {
   vertical-align: middle !important;
   padding: 24px !important;
 }
-
 

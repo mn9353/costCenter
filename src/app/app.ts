@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CostRow, Scenario, ScenarioType, VarianceColumn } from './cost-center.types';
@@ -10,8 +10,12 @@ import { CostRow, Scenario, ScenarioType, VarianceColumn } from './cost-center.t
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App implements OnInit {
+export class App implements OnInit, AfterViewInit {
   title = 'cost-center';
+
+  // Template references for scroll synchronization
+  @ViewChild('metadataPane') metadataPaneRef!: ElementRef<HTMLElement>;
+  @ViewChild('scenariosPane') scenariosPaneRef!: ElementRef<HTMLElement>;
 
   // Navigation View state
   activePage: 'dashboard' | 'documentation' = 'dashboard';
@@ -51,9 +55,6 @@ export class App implements OnInit {
     { id: 'v3', label: 'V3', compareLeft: 'Actual-2024', compareRight: 'RFC 1-2026' },
   ];
 
-  // Row Expand/Collapse State (Signal-based dictionary for reliable change detection in Zoneless mode)
-  expandedCategories = signal<{ [key: string]: boolean }>({});
-
 
   // Cost Center Rows (Source data)
   costRows: CostRow[] = [];
@@ -73,6 +74,33 @@ export class App implements OnInit {
 
   ngOnInit() {
     this.initializeData();
+  }
+
+  ngAfterViewInit() {
+    this.setupScrollSync();
+  }
+
+  // Sync vertical scroll between the two split panes so rows stay aligned
+  setupScrollSync() {
+    const meta = this.metadataPaneRef.nativeElement;
+    const scen = this.scenariosPaneRef.nativeElement;
+    let syncing = false;
+
+    scen.addEventListener('scroll', () => {
+      if (!syncing) {
+        syncing = true;
+        meta.scrollTop = scen.scrollTop;
+        syncing = false;
+      }
+    });
+
+    meta.addEventListener('scroll', () => {
+      if (!syncing) {
+        syncing = true;
+        scen.scrollTop = meta.scrollTop;
+        syncing = false;
+      }
+    });
   }
 
   // Prepopulate with realistic dummy data with site and team properties
@@ -386,20 +414,6 @@ export class App implements OnInit {
     return diff >= 0 ? `+${formatted}` : `-${formatted}`;
   }
 
-  // Check if a category is expanded
-  isExpanded(id: string): boolean {
-    return !!this.expandedCategories()[id];
-  }
-
-  // Toggle category expand state
-  toggleCategory(id: string) {
-    alert('Clicked row: ' + id);
-    this.expandedCategories.update(state => ({
-      ...state,
-      [id]: !state[id]
-    }));
-  }
-
   // Get total sum for a scenario column across all active filtered rows
   getColumnTotal(scenarioId: string): number {
     let sum = 0;
@@ -537,4 +551,3 @@ export class App implements OnInit {
 
 
 }
-

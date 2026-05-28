@@ -50,6 +50,15 @@ html, body {
   overflow: hidden;
 }
 
+/* Ensure the Angular root component fills the full viewport */
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 /* Custom Scrollbar Styles */
 ::-webkit-scrollbar {
   width: 8px;

@@ -1,0 +1,1323 @@
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'openAddScenario' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:35:97:
+[37m      35 │ ...n-add-scenario btn-primary glow-teal" (click)="[32mopenAddScenario[37m()">
+         ╵                                                   [32m~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isExpanded' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:93:39:
+[37m      93 │                   [class.is-expanded]="[32misExpanded[37m(row.id)"
+         ╵                                        [32m~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'toggleCategory' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:97:27:
+[37m      97 │                   (click)="[32mtoggleCategory[37m(row)"
+         ╵                            [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'onDragStart' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:182:31:
+[37m      182 │                   (dragstart)="[32monDragStart[37m($event, i)"
+          ╵                                [32m~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'onDragOver' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:183:30:
+[37m      183 │                   (dragover)="[32monDragOver[37m($event, i)"
+          ╵                               [32m~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'onDrop' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:184:26:
+[37m      184 │                   (drop)="[32monDrop[37m($event, i)"
+          ╵                           [32m~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'onDragEnd' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:185:29:
+[37m      185 │                   (dragend)="[32monDragEnd[37m()"
+          ╵                              [32m~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isExpanded' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:216:39:
+[37m      216 │                   [class.is-expanded]="[32misExpanded[37m(row.id)"
+          ╵                                        [32m~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'toggleCategory' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:220:27:
+[37m      220 │                   (click)="[32mtoggleCategory[37m(row)"
+          ╵                            [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'getColumnTotal' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:304:19:
+[37m      304 │                 {{ [32mgetColumnTotal[37m(scenario.id) / 1000 | number:'1...
+          ╵                    [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'getVarianceTotalBadgeClass' does not exist on type 'App'. Did you mean 'getVarianceBadgeClass'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:310:33:
+[37m      310 │                   <span [class]="[32mgetVarianceTotalBadgeClass[37m(vCol)">
+          ╵                                  [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'getFormattedVarianceTotal' does not exist on type 'App'. Did you mean 'getFormattedVariance'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:311:23:
+[37m      311 │                     {{ [32mgetFormattedVarianceTotal[37m(vCol) }}
+          ╵                        [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'closeAddScenario' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:535:68:
+[37m      535 │ ...kdrop" *ngIf="showAddScenarioModal" (click)="[32mcloseAddScenario[37m()">
+          ╵                                                 [32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'closeAddScenario' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:539:49:
+[37m      539 │ ...-modal-close" (click)="[32mcloseAddScenario[37m()" aria-label="Close d...
+          ╵                           [32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'closeAddScenario' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:559:66:
+[37m      559 │ ..." class="btn-cancel" (click)="[32mcloseAddScenario[37m()">Cancel</button>
+          ╵                                  [32m~~~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'addScenario' does not exist on type 'App'. Did you mean 'scenarios'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:560:72:
+[37m      560 │ ...tn-primary btn-add" (click)="[32maddScenario[37m()">Add Scenario</button>
+          ╵                                 [32m~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1068: Unexpected token. A constructor, method, accessor, or property was expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:386:6:
+[37m      386 │       [32m...[37mstate,
+          ╵       [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1434: Unexpected keyword or identifier.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:386:9:
+[37m      386 │       ...[32mstate[37m,
+          ╵          [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7008: Member 'state' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:386:9:
+[37m      386 │       ...[32mstate[37m,
+          ╵          [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1068: Unexpected token. A constructor, method, accessor, or property was expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:386:14:
+[37m      386 │       ...state[32m,[37m
+          ╵               [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'id'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:387:7:
+[37m      387 │       [[32mid[37m]: !state[id]
+          ╵        [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'state'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:387:13:
+[37m      387 │       [id]: ![32mstate[37m[id]
+          ╵              [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'id'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:387:19:
+[37m      387 │       [id]: !state[[32mid[37m]
+          ╵                    [32m~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1128: Declaration or statement expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:388:5:
+[37m      388 │     }[32m)[37m);
+          ╵      [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1128: Declaration or statement expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:388:6:
+[37m      388 │     })[32m)[37m;
+          ╵       [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1128: Declaration or statement expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:389:2:
+[37m      389 │   [32m}[37m
+          ╵   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getColumnTotal'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:392:2:
+[37m      392 │   [32mgetColumnTotal[37m(scenarioId: string): number {
+          ╵   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'scenarioId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:392:17:
+[37m      392 │   getColumnTotal([32mscenarioId[37m: string): number {
+          ╵                  [32m~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:392:27:
+[37m      392 │   getColumnTotal(scenarioId[32m:[37m string): number {
+          ╵                            [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'string' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:392:29:
+[37m      392 │   getColumnTotal(scenarioId: [32mstring[37m): number {
+          ╵                              [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:392:36:
+[37m      392 │   getColumnTotal(scenarioId: string)[32m:[37m number {
+          ╵                                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1434: Unexpected keyword or identifier.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:392:38:
+[37m      392 │   getColumnTotal(scenarioId: string): [32mnumber[37m {
+          ╵                                       [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:392:38:
+[37m      392 │   getColumnTotal(scenarioId: string): [32mnumber[37m {
+          ╵                                       [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:394:22:
+[37m      394 │     for (const row of [32mthis[37m.filteredCostRows) {
+          ╵                       [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'scenarioId'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:396:26:
+[37m      396 │         sum += row.values[[32mscenarioId[37m] || 0;
+          ╵                           [32m~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getVarianceColumnTotal'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:403:2:
+[37m      403 │   [32mgetVarianceColumnTotal[37m(col: VarianceColumn): number {
+          ╵   [32m~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'col'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:403:25:
+[37m      403 │   getVarianceColumnTotal([32mcol[37m: VarianceColumn): number {
+          ╵                          [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:403:28:
+[37m      403 │   getVarianceColumnTotal(col[32m:[37m VarianceColumn): number {
+          ╵                             [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'VarianceColumn' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:403:30:
+[37m      403 │   getVarianceColumnTotal(col: [32mVarianceColumn[37m): number {
+          ╵                               [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:403:45:
+[37m      403 │   getVarianceColumnTotal(col: VarianceColumn)[32m:[37m number {
+          ╵                                              [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1434: Unexpected keyword or identifier.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:403:47:
+[37m      403 │   getVarianceColumnTotal(col: VarianceColumn): [32mnumber[37m {
+          ╵                                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:403:47:
+[37m      403 │   getVarianceColumnTotal(col: VarianceColumn): [32mnumber[37m {
+          ╵                                                [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:405:22:
+[37m      405 │     for (const row of [32mthis[37m.filteredCostRows) {
+          ╵                       [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:407:15:
+[37m      407 │         sum += [32mthis[37m.getVarianceValue(row, col);
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'col'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:407:42:
+[37m      407 │         sum += this.getVarianceValue(row, [32mcol[37m);
+          ╵                                           [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getVarianceTotalBadgeClass'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:414:2:
+[37m      414 │   [32mgetVarianceTotalBadgeClass[37m(col: VarianceColumn): string {
+          ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'col'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:414:29:
+[37m      414 │   getVarianceTotalBadgeClass([32mcol[37m: VarianceColumn): string {
+          ╵                              [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:414:32:
+[37m      414 │   getVarianceTotalBadgeClass(col[32m:[37m VarianceColumn): string {
+          ╵                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'VarianceColumn' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:414:34:
+[37m      414 │   getVarianceTotalBadgeClass(col: [32mVarianceColumn[37m): string {
+          ╵                                   [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:414:49:
+[37m      414 │   getVarianceTotalBadgeClass(col: VarianceColumn)[32m:[37m string {
+          ╵                                                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1434: Unexpected keyword or identifier.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:414:51:
+[37m      414 │   getVarianceTotalBadgeClass(col: VarianceColumn): [32mstring[37m {
+          ╵                                                    [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'string' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:414:51:
+[37m      414 │   getVarianceTotalBadgeClass(col: VarianceColumn): [32mstring[37m {
+          ╵                                                    [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:415:16:
+[37m      415 │     const sum = [32mthis[37m.getVarianceColumnTotal(col);
+          ╵                 [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'col'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:415:44:
+[37m      415 │     const sum = this.getVarianceColumnTotal([32mcol[37m);
+          ╵                                             [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'getFormattedVarianceTotal'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:421:2:
+[37m      421 │   [32mgetFormattedVarianceTotal[37m(col: VarianceColumn): string {
+          ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'col'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:421:28:
+[37m      421 │   getFormattedVarianceTotal([32mcol[37m: VarianceColumn): string {
+          ╵                             [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:421:31:
+[37m      421 │   getFormattedVarianceTotal(col[32m:[37m VarianceColumn): string {
+          ╵                                [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'VarianceColumn' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:421:33:
+[37m      421 │   getFormattedVarianceTotal(col: [32mVarianceColumn[37m): string {
+          ╵                                  [32m~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:421:48:
+[37m      421 │   getFormattedVarianceTotal(col: VarianceColumn)[32m:[37m string {
+          ╵                                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1434: Unexpected keyword or identifier.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:421:50:
+[37m      421 │   getFormattedVarianceTotal(col: VarianceColumn): [32mstring[37m {
+          ╵                                                   [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'string' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:421:50:
+[37m      421 │   getFormattedVarianceTotal(col: VarianceColumn): [32mstring[37m {
+          ╵                                                   [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:422:17:
+[37m      422 │     const diff = [32mthis[37m.getVarianceColumnTotal(col);
+          ╵                  [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'col'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:422:45:
+[37m      422 │     const diff = this.getVarianceColumnTotal([32mcol[37m);
+          ╵                                              [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'openAddScenario'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:428:2:
+[37m      428 │   [32mopenAddScenario[37m() {
+          ╵   [32m~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:428:20:
+[37m      428 │   openAddScenario() [32m{[37m
+          ╵                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:429:4:
+[37m      429 │     [32mthis[37m.showAddScenarioModal = true;
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:430:4:
+[37m      430 │     [32mthis[37m.newScenarioType = 'Actual';
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:431:4:
+[37m      431 │     [32mthis[37m.newScenarioYear = 2027;
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'closeAddScenario'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:434:2:
+[37m      434 │   [32mcloseAddScenario[37m() {
+          ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:434:21:
+[37m      434 │   closeAddScenario() [32m{[37m
+          ╵                      [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:435:4:
+[37m      435 │     [32mthis[37m.showAddScenarioModal = false;
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'addScenario'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:439:2:
+[37m      439 │   [32maddScenario[37m() {
+          ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:439:16:
+[37m      439 │   addScenario() [32m{[37m
+          ╵                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:440:18:
+[37m      440 │     const id = `${[32mthis[37m.newScenarioType}-${this.newScenarioYear}`;
+          ╵                   [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:440:42:
+[37m      440 │     const id = `${this.newScenarioType}-${[32mthis[37m.newScenarioYear}`;
+          ╵                                           [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:441:27:
+[37m      441 │     const displayName = `${[32mthis[37m.newScenarioType} ${this.newScenar...
+          ╵                            [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:441:51:
+[37m      441 │ ... displayName = `${this.newScenarioType} ${[32mthis[37m.newScenarioYear}`;
+          ╵                                              [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:444:8:
+[37m      444 │     if ([32mthis[37m.scenarios.find(s => s.id === id)) {
+          ╵         [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS7006: Parameter 's' implicitly has an 'any' type.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:444:28:
+[37m      444 │     if (this.scenarios.find([32ms[37m => s.id === id)) {
+          ╵                             [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:451:12:
+[37m      451 │       type: [32mthis[37m.newScenarioType,
+          ╵             [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:452:12:
+[37m      452 │       year: [32mthis[37m.newScenarioYear,
+          ╵             [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:457:4:
+[37m      457 │     [32mthis[37m.scenarios.push(newScenario);
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:460:22:
+[37m      460 │     for (const row of [32mthis[37m.costRows) {
+          ╵                       [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:463:29:
+[37m      463 │           child.values[id] = [32mthis[37m.generateMockValue(child, newSce...
+          ╵                              [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:466:25:
+[37m      466 │         row.values[id] = [32mthis[37m.generateMockValue(row, newScenario....
+          ╵                          [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:471:4:
+[37m      471 │     [32mthis[37m.calculateParentTotals();
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:473:4:
+[37m      473 │     [32mthis[37m.closeAddScenario();
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'generateMockValue'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:2:
+[37m      477 │   [32mgenerateMockValue[37m(row: CostRow, type: ScenarioType, year: numbe...
+          ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'row'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:20:
+[37m      477 │   generateMockValue([32mrow[37m: CostRow, type: ScenarioType, year: numbe...
+          ╵                     [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:23:
+[37m      477 │   generateMockValue(row[32m:[37m CostRow, type: ScenarioType, year: numbe...
+          ╵                        [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'CostRow' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:25:
+[37m      477 │   generateMockValue(row: [32mCostRow[37m, type: ScenarioType, year: numbe...
+          ╵                          [32m~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'type'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:34:
+[37m      477 │ ...erateMockValue(row: CostRow, [32mtype[37m: ScenarioType, year: number)...
+          ╵                                 [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:38:
+[37m      477 │ ...ateMockValue(row: CostRow, type[32m:[37m ScenarioType, year: number): ...
+          ╵                                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'ScenarioType' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:40:
+[37m      477 │ ...ckValue(row: CostRow, type: [32mScenarioType[37m, year: number): number {
+          ╵                                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'year'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:54:
+[37m      477 │ ...ckValue(row: CostRow, type: ScenarioType, [32myear[37m: number): number {
+          ╵                                              [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:58:
+[37m      477 │ ...ckValue(row: CostRow, type: ScenarioType, year[32m:[37m number): number {
+          ╵                                                  [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:60:
+[37m      477 │ ...ckValue(row: CostRow, type: ScenarioType, year: [32mnumber[37m): number {
+          ╵                                                    [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:67:
+[37m      477 │ ...ckValue(row: CostRow, type: ScenarioType, year: number)[32m:[37m number {
+          ╵                                                           [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1434: Unexpected keyword or identifier.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:69:
+[37m      477 │ ...ckValue(row: CostRow, type: ScenarioType, year: number): [32mnumber[37m {
+          ╵                                                             [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:477:69:
+[37m      477 │ ...ckValue(row: CostRow, type: ScenarioType, year: number): [32mnumber[37m {
+          ╵                                                             [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'row'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:478:20:
+[37m      478 │     const baseVal = [32mrow[37m.values['Actual-2024'] || 70000;
+          ╵                     [32m~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'year'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:479:21:
+[37m      479 │     const yearDiff = [32myear[37m - 2024;
+          ╵                      [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'type'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:482:8:
+[37m      482 │     if ([32mtype[37m === 'Actual') {
+          ╵         [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'type'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:484:15:
+[37m      484 │     } else if ([32mtype[37m.startsWith('RFC')) {
+          ╵                [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'onDragStart'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:496:2:
+[37m      496 │   [32monDragStart[37m(event: DragEvent, index: number) {
+          ╵   [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:496:19:
+[37m      496 │   onDragStart(event[32m:[37m DragEvent, index: number) {
+          ╵                    [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:496:32:
+[37m      496 │   onDragStart(event: DragEvent, [32mindex[37m: number) {
+          ╵                                 [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:496:37:
+[37m      496 │   onDragStart(event: DragEvent, index[32m:[37m number) {
+          ╵                                      [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:496:39:
+[37m      496 │   onDragStart(event: DragEvent, index: [32mnumber[37m) {
+          ╵                                        [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:496:47:
+[37m      496 │   onDragStart(event: DragEvent, index: number) [32m{[37m
+          ╵                                                [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:497:4:
+[37m      497 │     [32mthis[37m.draggedColIndex = index;
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:497:27:
+[37m      497 │     this.draggedColIndex = [32mindex[37m;
+          ╵                            [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS18048: 'event' is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:498:8:
+[37m      498 │     if ([32mevent[37m.dataTransfer) {
+          ╵         [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'dataTransfer' does not exist on type 'Event'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:498:14:
+[37m      498 │     if (event.[32mdataTransfer[37m) {
+          ╵               [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS18048: 'event' is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:499:6:
+[37m      499 │       [32mevent[37m.dataTransfer.effectAllowed = 'move';
+          ╵       [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'dataTransfer' does not exist on type 'Event'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:499:12:
+[37m      499 │       event.[32mdataTransfer[37m.effectAllowed = 'move';
+          ╵             [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS18048: 'event' is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:500:6:
+[37m      500 │       [32mevent[37m.dataTransfer.setData('text/plain', index.toString());
+          ╵       [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'dataTransfer' does not exist on type 'Event'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:500:12:
+[37m      500 │       event.[32mdataTransfer[37m.setData('text/plain', index.toString());
+          ╵             [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:500:47:
+[37m      500 │       event.dataTransfer.setData('text/plain', [32mindex[37m.toString());
+          ╵                                                [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'onDragOver'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:504:2:
+[37m      504 │   [32monDragOver[37m(event: DragEvent, index: number) {
+          ╵   [32m~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:504:18:
+[37m      504 │   onDragOver(event[32m:[37m DragEvent, index: number) {
+          ╵                   [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:504:31:
+[37m      504 │   onDragOver(event: DragEvent, [32mindex[37m: number) {
+          ╵                                [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:504:36:
+[37m      504 │   onDragOver(event: DragEvent, index[32m:[37m number) {
+          ╵                                     [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:504:38:
+[37m      504 │   onDragOver(event: DragEvent, index: [32mnumber[37m) {
+          ╵                                       [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:504:46:
+[37m      504 │   onDragOver(event: DragEvent, index: number) [32m{[37m
+          ╵                                               [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS18048: 'event' is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:505:4:
+[37m      505 │     [32mevent[37m.preventDefault();
+          ╵     [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:506:8:
+[37m      506 │     if ([32mthis[37m.draggedColIndex !== null && this.draggedColIndex !==...
+          ╵         [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:506:41:
+[37m      506 │ ...his.draggedColIndex !== null && [32mthis[37m.draggedColIndex !== index) {
+          ╵                                    [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:506:66:
+[37m      506 │ ...his.draggedColIndex !== null && this.draggedColIndex !== [32mindex[37m) {
+          ╵                                                             [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:507:6:
+[37m      507 │       [32mthis[37m.dragOverColIndex = index;
+          ╵       [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:507:30:
+[37m      507 │       this.dragOverColIndex = [32mindex[37m;
+          ╵                               [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'onDrop'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:511:2:
+[37m      511 │   [32monDrop[37m(event: DragEvent, index: number) {
+          ╵   [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:511:14:
+[37m      511 │   onDrop(event[32m:[37m DragEvent, index: number) {
+          ╵               [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:511:27:
+[37m      511 │   onDrop(event: DragEvent, [32mindex[37m: number) {
+          ╵                            [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ',' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:511:32:
+[37m      511 │   onDrop(event: DragEvent, index[32m:[37m number) {
+          ╵                                 [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2693: 'number' only refers to a type, but is being used as a value here.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:511:34:
+[37m      511 │   onDrop(event: DragEvent, index: [32mnumber[37m) {
+          ╵                                   [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:511:42:
+[37m      511 │   onDrop(event: DragEvent, index: number) [32m{[37m
+          ╵                                           [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS18048: 'event' is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:512:4:
+[37m      512 │     [32mevent[37m.preventDefault();
+          ╵     [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:513:8:
+[37m      513 │     if ([32mthis[37m.draggedColIndex !== null && this.draggedColIndex !==...
+          ╵         [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:513:41:
+[37m      513 │ ...his.draggedColIndex !== null && [32mthis[37m.draggedColIndex !== index) {
+          ╵                                    [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:513:66:
+[37m      513 │ ...his.draggedColIndex !== null && this.draggedColIndex !== [32mindex[37m) {
+          ╵                                                             [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:514:30:
+[37m      514 │       const draggedScenario = [32mthis[37m.scenarios[this.draggedColIndex];
+          ╵                               [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:514:45:
+[37m      514 │       const draggedScenario = this.scenarios[[32mthis[37m.draggedColIndex];
+          ╵                                              [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:515:6:
+[37m      515 │       [32mthis[37m.scenarios.splice(this.draggedColIndex, 1);
+          ╵       [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:515:28:
+[37m      515 │       this.scenarios.splice([32mthis[37m.draggedColIndex, 1);
+          ╵                             [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:516:6:
+[37m      516 │       [32mthis[37m.scenarios.splice(index, 0, draggedScenario);
+          ╵       [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'index'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:516:28:
+[37m      516 │       this.scenarios.splice([32mindex[37m, 0, draggedScenario);
+          ╵                             [32m~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:518:4:
+[37m      518 │     [32mthis[37m.onDragEnd();
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'onDragEnd'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:521:2:
+[37m      521 │   [32monDragEnd[37m() {
+          ╵   [32m~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1005: ';' expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:521:14:
+[37m      521 │   onDragEnd() [32m{[37m
+          ╵               [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:522:4:
+[37m      522 │     [32mthis[37m.draggedColIndex = null;
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2532: Object is possibly 'undefined'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:523:4:
+[37m      523 │     [32mthis[37m.dragOverColIndex = null;
+          ╵     [32m~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS1128: Declaration or statement expected.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.ts:527:0:
+[37m      527 │ [32m}[37m
+          ╵ [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1251:4:
+[37m      1251 │     [32mreturn[37m sum;
+           ╵     [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1263:4:
+[37m      1263 │     [32mreturn[37m sum;
+           ╵     [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1271:8:
+[37m      1271 │         [32mreturn[37m 'variance-badge pos';
+           ╵         [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1273:8:
+[37m      1273 │         [32mreturn[37m 'variance-badge neg';
+           ╵         [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1274:4:
+[37m      1274 │     [32mreturn[37m 'variance-badge zero';
+           ╵     [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1281:4:
+[37m      1281 │     [32mreturn[37m diff >= 0 ? `+${formatted}` : `-${formatted}`;
+           ╵     [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1302:8:
+[37m      1302 │         [32mreturn[37m;
+           ╵         [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTop-level return cannot be used inside an ECMAScript module[0m
+
+    src/app/app.ts:1344:4:
+[37m      1344 │     [32mreturn[37m Math.round((baseVal * factor * deviation) / 100) * 100;
+           ╵     [32m~~~~~~[0m
+
+  This file is considered to be an ECMAScript module because of the "export" keyword here:
+
+    src/app/app.ts:850:0:
+[37m      850 │ [32mexport[37m class App {
+          ╵ [32m~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isExpanded' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:93:39:
+[37m      93 │                   [class.is-expanded]="[32misExpanded[37m(row.id)"
+         ╵                                        [32m~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'toggleCategory' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:97:27:
+[37m      97 │                   (click)="[32mtoggleCategory[37m(row)"
+         ╵                            [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'isExpanded' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:216:39:
+[37m      216 │                   [class.is-expanded]="[32misExpanded[37m(row.id)"
+          ╵                                        [32m~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'toggleCategory' does not exist on type 'App'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/app.html:220:27:
+[37m      220 │                   (click)="[32mtoggleCategory[37m(row)"
+          ╵                            [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component App.
+
+    src/app/app.ts:10:15:
+[37m      10 │   templateUrl: [32m'./app.html'[37m,
+         ╵                [32m~~~~~~~~~~~~[0m
+
+[39m[22m

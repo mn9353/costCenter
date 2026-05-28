@@ -43,4 +43,21 @@ describe('App', () => {
     childRow = fixture.nativeElement.querySelector('.child-row');
     expect(childRow).toBeTruthy(); // Child rows should now be rendered!
   });
+
+  it('should expand rows when expand button is clicked', async () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+    fixture.detectChanges();
+
+    const expandButton = fixture.nativeElement.querySelector('.btn-expand') as HTMLButtonElement;
+    expect(expandButton).toBeTruthy();
+
+    expandButton.click();
+    fixture.detectChanges();
+
+    expect(app.isExpanded('Consultancy')).toBe(true);
+    const updatedExpandButton = fixture.nativeElement.querySelector('.btn-expand') as HTMLButtonElement;
+    expect(updatedExpandButton.getAttribute('aria-expanded')).toBe('true');
+    expect(fixture.nativeElement.querySelector('.child-row')).toBeTruthy();
+  });
 });

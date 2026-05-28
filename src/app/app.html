@@ -5,9 +5,6 @@
       <h1 class="company-name">CROWN MANUFACTURING</h1>
       <span class="divider">|</span>
       <span class="platform-name">Performance Hub</span>
-      <span style="font-size: 10px; color: #ffeb3b; margin-left: 16px; font-family: monospace; border: 1px dashed #ffeb3b; padding: 2px 6px; border-radius: 2px;">
-        Debug Toggles State: {{ expandedCategories() | json }}
-      </span>
     </div>
     <div id="system-badge-btn" class="system-badge interactive" (click)="setView('documentation')" style="cursor: pointer;">
       Cost Management Dashboard 📚
@@ -65,7 +62,7 @@
       <div class="grid-split-container">
       
       <!-- Left Fixed Pane: Contains only metadata columns (1 to 8) -->
-      <div class="metadata-pane">
+      <div class="metadata-pane" #metadataPane>
         <table class="cost-table metadata-table">
           <thead>
             <tr class="header-super">
@@ -93,21 +90,11 @@
             <ng-container *ngFor="let row of filteredCostRows">
               <!-- Parent Row -->
               <tr class="parent-row" 
-                  [class.is-expanded]="isExpanded(row.id)"
                   [class.row-hovered]="hoveredRowId === row.id"
                   (mouseenter)="hoveredRowId = row.id"
-                  (mouseleave)="hoveredRowId = null"
-                  (click)="toggleCategory(row.id)"
-                  style="cursor: pointer;">
+                  (mouseleave)="hoveredRowId = null">
                 <td class="col-1 font-bold">
                   <div class="account-cell-content">
-                    <button *ngIf="row.isExpandable" class="btn-expand" [attr.aria-label]="'Toggle ' + row.account" type="button" style="pointer-events: none;">
-                      <span class="chevron-icon" [class.expanded]="isExpanded(row.id)">
-                        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
-                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-                        </svg>
-                      </span>
-                    </button>
                     <span class="account-name">{{ row.account }}</span>
                   </div>
                 </td>
@@ -119,8 +106,8 @@
                 <td class="col-7"></td>
                 <td class="col-8"></td>
               </tr>
-              <!-- Child Rows -->
-              <ng-container *ngIf="row.isExpandable && isExpanded(row.id)">
+              <!-- Child Rows (always visible) -->
+              <ng-container *ngIf="row.isExpandable">
                 <tr *ngFor="let child of row.children" 
                     class="child-row"
                     [class.row-hovered]="hoveredRowId === child.id"
@@ -166,7 +153,7 @@
       </div>
 
       <!-- Right Scrollable Pane: Contains scenarios and variance, plus mobile-responsive metadata columns (2 to 8) -->
-      <div class="scenarios-pane">
+      <div class="scenarios-pane" #scenariosPane>
         <table class="cost-table scenarios-table">
           <thead>
             <tr class="header-super">
@@ -223,12 +210,9 @@
             <ng-container *ngFor="let row of filteredCostRows">
               <!-- Parent Row -->
               <tr class="parent-row" 
-                  [class.is-expanded]="isExpanded(row.id)"
                   [class.row-hovered]="hoveredRowId === row.id"
                   (mouseenter)="hoveredRowId = row.id"
-                  (mouseleave)="hoveredRowId = null"
-                  (click)="toggleCategory(row.id)"
-                  style="cursor: pointer;">
+                  (mouseleave)="hoveredRowId = null">
                 <!-- Mobile only empty space cells for parent rows -->
                 <td class="mobile-only-col col-2"></td>
                 <td class="mobile-only-col col-3"></td>
@@ -253,8 +237,8 @@
                 </td>
               </tr>
 
-              <!-- Nested Child Rows -->
-              <ng-container *ngIf="row.isExpandable && isExpanded(row.id)">
+              <!-- Nested Child Rows (always visible) -->
+              <ng-container *ngIf="row.isExpandable">
                 <tr *ngFor="let child of row.children" 
                     class="child-row"
                     [class.row-hovered]="hoveredRowId === child.id"
