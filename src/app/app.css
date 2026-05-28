@@ -193,15 +193,14 @@ input:checked + .slider:before {
   flex-direction: column;
 }
 
-/* Table container auto collapses height and removes default card background to merge below the table */
-.table-container {
-  width: 100%;
-  height: fit-content;
-  max-height: 100%;
+/* Table scroll container for synchronized vertical scrolling of split tables */
+.table-scroll-container {
+  flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  border: none;
-  background-color: transparent;
+  height: 100%;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color-card);
 }
 
 /* --- SPLIT GRID PANEL LAYOUT --- */
@@ -209,7 +208,6 @@ input:checked + .slider:before {
   display: flex;
   width: 100%;
   height: fit-content;
-  border: 1px solid var(--border-color);
   background-color: transparent;
   overflow: hidden;
 }
@@ -258,6 +256,10 @@ input:checked + .slider:before {
   z-index: 10;
 }
 
+.header-super, .header-super th {
+  height: 28px !important;
+}
+
 .header-super th {
   background-color: #041324;
   border-bottom: 1px solid var(--border-color);
@@ -287,6 +289,10 @@ input:checked + .slider:before {
 
 .last-metadata-col {
   border-right: none !important;
+}
+
+.header-sub, .header-sub th {
+  height: 34px !important;
 }
 
 .header-sub th {
@@ -407,6 +413,10 @@ input:checked + .slider:before {
   border-bottom: 1px solid var(--border-color);
   text-align: center;
   padding: 8px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
 }
 
 /* Row-level hovering matches sticky columns colors */
@@ -426,6 +436,10 @@ input:checked + .slider:before {
 }
 
 /* Parent rows */
+.parent-row, .parent-row td {
+  height: 38px !important;
+}
+
 .parent-row {
   background-color: #07192e;
 }
@@ -466,6 +480,9 @@ input:checked + .slider:before {
   font-size: 12px;
   font-weight: 600;
   color: var(--text-color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .parent-value-cell {
@@ -473,6 +490,10 @@ input:checked + .slider:before {
 }
 
 /* Child rows */
+.child-row, .child-row td {
+  height: 38px !important;
+}
+
 .child-row {
   background-color: var(--bg-color-input);
 }
@@ -548,6 +569,10 @@ input:checked + .slider:before {
   bottom: 0;
   z-index: 5;
   box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.45);
+}
+
+.total-row, .total-row td {
+  height: 38px !important;
 }
 
 .total-row {

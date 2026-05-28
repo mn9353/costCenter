@@ -58,7 +58,8 @@
 
   <!-- Dashboard Split Grid Wrapper (Visible only on Dashboard view) -->
   <div class="table-outer-wrapper" *ngIf="activePage === 'dashboard'">
-    <div class="grid-split-container">
+    <div class="table-scroll-container">
+      <div class="grid-split-container">
       
       <!-- Left Fixed Pane: Contains only metadata columns (1 to 8) -->
       <div class="metadata-pane">
@@ -307,6 +308,7 @@
 
     </div>
   </div>
+</div>
 
   <!-- Documentation Guide View (Visible only on Documentation view) -->
   <div class="docs-container" *ngIf="activePage === 'documentation'">
