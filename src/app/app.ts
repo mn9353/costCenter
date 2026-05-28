@@ -393,6 +393,7 @@ export class App implements OnInit {
 
   // Toggle category expand state
   toggleCategory(id: string) {
+    alert('Clicked row: ' + id);
     this.expandedCategories.update(state => ({
       ...state,
       [id]: !state[id]
