@@ -571,35 +571,35 @@ input:checked + .slider:before {
   color: var(--text-color-secondary);
 }
 
-/* Summary Footer row */
+/* Summary Footer row - Visually separated, thick borders, floats over content */
 .cost-table tfoot {
   position: sticky;
   bottom: 0;
   z-index: 5;
+  box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.45);
 }
 
 .total-row {
-  background-color: #051426;
-  border-top: 2px solid var(--border-color-active);
-  border-bottom: 2px solid var(--border-color-active);
+  background-color: #09223e !important;
 }
 
 .total-row .sticky-col {
-  background-color: #051426;
-  border-top: 2px solid var(--border-color-active);
-  border-bottom: 2px solid var(--border-color-active);
-  color: var(--accent-teal);
-  font-size: 12px;
-  font-weight: 700;
-  text-align: center;
+  background-color: #09223e !important;
+  border-top: 3px solid var(--border-color-active) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  color: var(--accent-teal) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
 }
 
 .total-val {
+  background-color: #09223e !important;
   color: var(--accent-teal) !important;
-  font-size: 11px;
-  font-weight: 700;
-  border-top: 2px solid var(--border-color-active);
-  border-bottom: 2px solid var(--border-color-active);
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  border-top: 3px solid var(--border-color-active) !important;
+  border-bottom: 1px solid var(--border-color) !important;
 }
 
 /* Font weight helper */
