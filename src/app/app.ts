@@ -13,6 +13,13 @@ import { CostRow, Scenario, ScenarioType, VarianceColumn } from './cost-center.t
 export class App implements OnInit {
   title = 'cost-center';
 
+  // Navigation View state
+  activePage: 'dashboard' | 'documentation' = 'dashboard';
+
+  setView(view: 'dashboard' | 'documentation') {
+    this.activePage = view;
+  }
+
   // Site and Team drop-down selections
   sites = ['All Sites', 'Site A - Crown Manufacturing', 'Site B - Plant 2', 'Site C - ERP Core'];
   selectedSite = 'All Sites';

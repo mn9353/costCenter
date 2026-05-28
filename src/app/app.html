@@ -1,16 +1,18 @@
 <div class="app-container">
   <!-- Top Platform Header -->
   <header class="main-header">
-    <div class="logo-area">
+    <div class="logo-area" (click)="setView('dashboard')" style="cursor: pointer;">
       <h1 class="company-name">CROWN MANUFACTURING</h1>
       <span class="divider">|</span>
       <span class="platform-name">Performance Hub</span>
     </div>
-    <div class="system-badge">Cost Management Dashboard</div>
+    <div id="system-badge-btn" class="system-badge interactive" (click)="setView('documentation')" style="cursor: pointer;">
+      Cost Management Dashboard 📚
+    </div>
   </header>
 
-  <!-- Control Bar -->
-  <div class="control-bar">
+  <!-- Control Bar (Visible only on Dashboard view) -->
+  <div class="control-bar" *ngIf="activePage === 'dashboard'">
     <!-- Left Filters -->
     <div class="filter-group left-filters">
       <div class="filter-item">
@@ -54,8 +56,8 @@
     </div>
   </div>
 
-  <!-- Dashboard Grid / Table Area -->
-  <div class="table-outer-wrapper">
+  <!-- Dashboard Grid / Table Area (Visible only on Dashboard view) -->
+  <div class="table-outer-wrapper" *ngIf="activePage === 'dashboard'">
     <div class="table-container">
       <table class="cost-table">
         <thead>
@@ -231,11 +233,74 @@
     </div>
   </div>
 
-  <!-- SAP-style Sticky Footer Control Bar -->
-  <footer class="app-footer">
-    <span class="user-context">Role: Cost Controller (Read-Only)</span>
-    <button id="btn-footer-close" class="btn-footer-close">Close Dashboard</button>
-  </footer>
+  <!-- Documentation Guide View (Visible only on Documentation view) -->
+  <div class="docs-container" *ngIf="activePage === 'documentation'">
+    <div class="docs-card">
+      <div class="docs-header">
+        <h2>Performance Hub — Cost Management Guide</h2>
+        <button id="btn-docs-back" class="btn-back" (click)="setView('dashboard')">← Back to Dashboard</button>
+      </div>
+
+      <div class="docs-body">
+        <section class="docs-section">
+          <h3>Overview</h3>
+          <p>
+            This dashboard serves as a high-density, read-only cost monitoring utility for <strong>Crown Manufacturing</strong>. It allows cost controllers, CFOs, and finance directors to review historical actuals, forecast future demands, compare revised forecast scenarios, and perform quick visual variance checks in real time.
+          </p>
+        </section>
+
+        <section class="docs-section">
+          <h3>Revised Forecast Scenarios (RFC)</h3>
+          <p>
+            In corporate finance, <strong>RFC</strong> stands for <strong>Revised Forecast Scenario</strong> (or Re-Forecast). A forecast is never static; it is updated periodically throughout the fiscal year as actual spending data becomes available:
+          </p>
+          <div class="docs-grid">
+            <div class="docs-box">
+              <h4>RFC 1 (Q1 Forecast Update)</h4>
+              <p>Compiled after the first quarter closes. It integrates Q1 actual values (Jan–Mar) with revised forecast estimations for the remaining three quarters (Apr–Dec).</p>
+            </div>
+            <div class="docs-box">
+              <h4>RFC 2 (Q2 Forecast Update)</h4>
+              <p>Mid-year forecast update compiled after the second quarter. It incorporates the first half's actual numbers (Jan–Jun) and updates second-half estimations.</p>
+            </div>
+            <div class="docs-box">
+              <h4>RFC 3 (Q3 Forecast Update)</h4>
+              <p>Updated forecast compiled after the third quarter closes. It uses 9 months of historical actuals (Jan–Sep) and refines estimations for Q4 (Oct–Dec).</p>
+            </div>
+            <div class="docs-box">
+              <h4>RFC 4 (Q4 Forecast Update)</h4>
+              <p>The final re-forecast scenario updated just before the fiscal close. It represents the final, most accurate forecast projection before yearly audits begin.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h3>Time Horizons: H1 and H2</h3>
+          <p>
+            Budget cycles are split into half-years to measure performance trends and implement mid-course adjustments:
+          </p>
+          <ul class="docs-list">
+            <li><strong>H1 (First Half)</strong>: Covers the first 6 months of the fiscal year (January 1st through June 30th). H1 actual spending data forms the basis for the RFC 2 mid-year adjustments.</li>
+            <li><strong>H2 (Second Half)</strong>: Covers the final 6 months of the fiscal year (July 1st through December 31st). Financial managers monitor H2 projections to implement cost-saving plans and keep expenditures within limits.</li>
+          </ul>
+        </section>
+
+        <section class="docs-section">
+          <h3>Implemented Features (Demo Reference Sheet)</h3>
+          <p>
+            These features showcase the application's responsiveness and enterprise preparation during your client demo:
+          </p>
+          <ul class="docs-list">
+            <li><strong>Draggable Columns</strong>: Click and drag any forecast scenario column header horizontally. Teal indicator borders will appear to preview placement when rearranging.</li>
+            <li><strong>Dynamic Scenarios Modal</strong>: Click "+ Add Scenario" to trigger a modal. Newly generated columns immediately populate with trend-accurate mock values.</li>
+            <li><strong>Zebra Layout & Frozen Columns</strong>: Frozen left metadata pane on desktops. On mobile screens, only the <strong>Account</strong> column remains frozen to fit smaller viewports.</li>
+            <li><strong>Dynamic Filtering & Summaries</strong>: Changing choices in the Site or Team dropdowns filters child rows and instantly recalculates parent categories and variance columns on the fly.</li>
+            <li><strong>Visual Variance Badges</strong>: Color-coded pills (Green for favorable savings, Red for unfavorable overspends) showing differences between actuals and forecast projections.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal Dialog overlay -->
   <div class="modal-backdrop" *ngIf="showAddScenarioModal" (click)="closeAddScenario()">
