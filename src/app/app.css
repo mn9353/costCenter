@@ -216,8 +216,8 @@ input:checked + .slider:before {
 
 /* Left Pane (Metadata) - Static, no scroll */
 .metadata-pane {
-  flex: 0 0 920px;
-  width: 920px;
+  flex: 0 0 990px;
+  width: 990px;
   overflow: hidden;
   border-right: 2px solid var(--border-color-active);
   background-color: var(--bg-color-card);
@@ -240,7 +240,7 @@ input:checked + .slider:before {
 }
 
 .metadata-table {
-  width: 920px;
+  width: 990px;
 }
 
 .scenarios-table {
@@ -310,12 +310,12 @@ input:checked + .slider:before {
 /* Metadata Column Widths */
 .col-1 { width: 140px; min-width: 140px; }
 .col-2 { width: 90px; min-width: 90px; }
-.col-3 { width: 90px; min-width: 90px; }
-.col-4 { width: 140px; min-width: 140px; }
-.col-5 { width: 90px; min-width: 90px; }
+.col-3 { width: 100px; min-width: 100px; }
+.col-4 { width: 160px; min-width: 160px; }
+.col-5 { width: 110px; min-width: 110px; }
 .col-6 { width: 90px; min-width: 90px; }
 .col-7 { width: 100px; min-width: 100px; }
-.col-8 { width: 180px; min-width: 180px; }
+.col-8 { width: 200px; min-width: 200px; }
 
 /* Dynamic scenario headers */
 .scenario-header-cell {
@@ -506,7 +506,7 @@ input:checked + .slider:before {
 }
 
 .truncate-text {
-  max-width: 180px;
+  max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1224,24 +1224,4 @@ input:checked + .slider:before {
   padding: 24px !important;
 }
 
-/* Column Resizing */
-.header-sub th {
-  position: relative; /* Ensure resize handle is positioned relative to cell */
-}
 
-.col-resize-handle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 6px;
-  height: 100%;
-  cursor: col-resize;
-  z-index: 100;
-  background-color: transparent;
-  transition: background-color 0.2s;
-}
-
-.col-resize-handle:hover, .col-resize-handle:active {
-  background-color: var(--border-color-active) !important;
-  box-shadow: 0 0 4px var(--accent-teal);
-}

@@ -62,8 +62,8 @@
       <div class="grid-split-container">
       
       <!-- Left Fixed Pane: Contains only metadata columns (1 to 8) -->
-      <div class="metadata-pane" [style.flex]="'0 0 ' + metadataPaneWidth + 'px'" [style.width.px]="metadataPaneWidth">
-        <table class="cost-table metadata-table" [style.width.px]="metadataPaneWidth">
+      <div class="metadata-pane">
+        <table class="cost-table metadata-table">
           <thead>
             <tr class="header-super">
               <th class="super-header-cell super-header-title">Cost Center Metadata</th>
@@ -76,38 +76,14 @@
               <th class="super-header-cell last-metadata-col"></th>
             </tr>
             <tr class="header-sub">
-              <th class="col-1" [style.width.px]="colWidths['col1']" [style.minWidth.px]="colWidths['col1']">
-                Account
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col1')"></div>
-              </th>
-              <th class="col-2" [style.width.px]="colWidths['col2']" [style.minWidth.px]="colWidths['col2']">
-                Spend Type
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col2')"></div>
-              </th>
-              <th class="col-3" [style.width.px]="colWidths['col3']" [style.minWidth.px]="colWidths['col3']">
-                Spend Layer
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col3')"></div>
-              </th>
-              <th class="col-4" [style.width.px]="colWidths['col4']" [style.minWidth.px]="colWidths['col4']">
-                Category
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col4')"></div>
-              </th>
-              <th class="col-5" [style.width.px]="colWidths['col5']" [style.minWidth.px]="colWidths['col5']">
-                System
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col5')"></div>
-              </th>
-              <th class="col-6" [style.width.px]="colWidths['col6']" [style.minWidth.px]="colWidths['col6']">
-                Supplier
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col6')"></div>
-              </th>
-              <th class="col-7" [style.width.px]="colWidths['col7']" [style.minWidth.px]="colWidths['col7']">
-                Internal Order
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col7')"></div>
-              </th>
-              <th class="col-8" [style.width.px]="colWidths['col8']" [style.minWidth.px]="colWidths['col8']">
-                Item Description
-                <div class="col-resize-handle" (mousedown)="onResizeStart($event, 'col8')"></div>
-              </th>
+              <th class="col-1">Account</th>
+              <th class="col-2">Spend Type</th>
+              <th class="col-3">Spend Layer</th>
+              <th class="col-4">Category</th>
+              <th class="col-5">System</th>
+              <th class="col-6">Supplier</th>
+              <th class="col-7">Internal Order</th>
+              <th class="col-8">Item Description</th>
             </tr>
           </thead>
           <tbody>
@@ -122,7 +98,7 @@
                   style="cursor: pointer;">
                 <td class="col-1 font-bold">
                   <div class="account-cell-content">
-                    <button *ngIf="row.isExpandable" class="btn-expand" [attr.aria-label]="'Toggle ' + row.account">
+                    <button *ngIf="row.isExpandable" class="btn-expand" [attr.aria-label]="'Toggle ' + row.account" (click)="toggleCategory(row.id); $event.stopPropagation()">
                       <span class="chevron-icon" [class.expanded]="isExpanded(row.id)">
                         <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
                           <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
