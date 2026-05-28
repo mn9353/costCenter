@@ -1,3 +1,4 @@
+import { describe, beforeEach, it, expect } from 'vitest';
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 
@@ -16,8 +17,30 @@ describe('App', () => {
 
   it('should render title', async () => {
     const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
+    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, cost-center');
+    expect(compiled.querySelector('.company-name')?.textContent).toContain('CROWN MANUFACTURING');
+  });
+
+  it('should expand rows when toggle is clicked', async () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // Verify initially collapsed
+    expect(app.isExpanded('Consultancy')).toBe(false);
+    let childRow = fixture.nativeElement.querySelector('.child-row');
+    expect(childRow).toBeNull(); // No child rows should be in DOM initially
+
+    // Click parent row to expand
+    const parentRow = fixture.nativeElement.querySelector('.parent-row') as HTMLElement;
+    expect(parentRow).toBeTruthy();
+    parentRow.click();
+    fixture.detectChanges();
+
+    // Verify expanded
+    expect(app.isExpanded('Consultancy')).toBe(true);
+    childRow = fixture.nativeElement.querySelector('.child-row');
+    expect(childRow).toBeTruthy(); // Child rows should now be rendered!
   });
 });

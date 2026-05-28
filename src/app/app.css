@@ -257,13 +257,11 @@ input:checked + .slider:before {
 
 .metadata-table {
   width: 990px;
-  height: 100%;
   flex: 1 0 auto;
 }
 
 .scenarios-table {
   width: max-content; /* Prevents squeezing columns, forces scrollbar */
-  height: 100%;
   flex: 1 0 auto;
 }
 
