@@ -692,11 +692,12 @@ input:checked + .slider:before {
   background-color: var(--bg-color-main);
   display: flex;
   justify-content: center;
+  align-items: flex-start; /* Prevent vertical stretching of child card */
 }
 
 .docs-card {
   width: 100%;
-  max-width: 900px;
+  max-width: 100%; /* Spans full width of the container */
   background-color: var(--bg-color-card);
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -822,6 +823,7 @@ input:checked + .slider:before {
   height: 24px;
   position: relative;
   margin-bottom: 24px;
+  min-width: 600px;
 }
 
 .half-block {
@@ -862,6 +864,7 @@ input:checked + .slider:before {
   left: 0;
   width: 100%;
   height: 0;
+  min-width: 600px;
 }
 
 .timeline-node {

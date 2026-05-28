@@ -324,7 +324,7 @@
           </p>
         </section>
 
-        <!-- Visual Roadmap/Timeline Diagram for RFC and H1/H2 -->
+        <!-- Visual Roadmap/Timeline Diagram with Symmetrical Node Percentages (12.5%, 37.5%, 62.5%, 87.5%) to prevent overflow -->
         <section class="docs-section">
           <h3>Visual Guide: When do we update forecasts?</h3>
           <p>
@@ -344,9 +344,9 @@
               </div>
             </div>
             
-            <!-- Nodes representing the forecast updating points -->
+            <!-- Symmetrical timeline nodes positioned at quarter midpoints -->
             <div class="timeline-nodes">
-              <div class="timeline-node" style="left: 25%;">
+              <div class="timeline-node" style="left: 12.5%;">
                 <div class="node-dot">Q1</div>
                 <div class="node-label">
                   <span class="node-tag">RFC 1</span>
@@ -354,7 +354,7 @@
                 </div>
               </div>
               
-              <div class="timeline-node" style="left: 50%;">
+              <div class="timeline-node" style="left: 37.5%;">
                 <div class="node-dot active-mid">Q2</div>
                 <div class="node-label">
                   <span class="node-tag">RFC 2</span>
@@ -362,7 +362,7 @@
                 </div>
               </div>
               
-              <div class="timeline-node" style="left: 75%;">
+              <div class="timeline-node" style="left: 62.5%;">
                 <div class="node-dot">Q3</div>
                 <div class="node-label">
                   <span class="node-tag">RFC 3</span>
@@ -370,7 +370,7 @@
                 </div>
               </div>
               
-              <div class="timeline-node" style="left: 100%;">
+              <div class="timeline-node" style="left: 87.5%;">
                 <div class="node-dot">Q4</div>
                 <div class="node-label">
                   <span class="node-tag">RFC 4</span>
@@ -418,16 +418,16 @@
         </section>
 
         <section class="docs-section">
-          <h3>Things you can show your client in the demo</h3>
+          <h3>Key Features of the Dashboard</h3>
           <p>
-            Here is a quick cheat sheet of what you can show during your presentation:
+            Here is a quick summary of the features and tools you can interact with on the dashboard:
           </p>
           <ul class="docs-list">
-            <li><strong>Rearrange Columns</strong>: Click and drag any forecast column (like RFC 3) left or right. You will see a blue marker show where it's going to drop.</li>
-            <li><strong>Add a New Scenario</strong>: Click "+ Add Scenario" and pick a type and year. The new column will pop in instantly, pre-filled with realistic currency values so it doesn't look empty.</li>
-            <li><strong>Zebra Layout with Frozen Columns</strong>: Scroll horizontally on your screen. The left metadata stays frozen. On mobile, only the "Account" column stays frozen so it fits nicely on a phone screen.</li>
-            <li><strong>Filters That Work</strong>: Toggle the Site or Team dropdowns at the top. The rows will filter immediately, and all category totals and variance badges will recalculate in real time!</li>
-            <li><strong>Green and Red Badges</strong>: These show the budget variance. Green means we spent less than forecasted (savings!), and red means we spent more (overspend).</li>
+            <li><strong>Rearrange Columns</strong>: You can drag and drop forecast columns left or right to customize your view. A blue marker guides you where they will land.</li>
+            <li><strong>Add a New Scenario</strong>: Use the "+ Add Scenario" button to add a new forecast type and year. The new column appears instantly, pre-filled with realistic currency amounts.</li>
+            <li><strong>Zebra Layout with Frozen Columns</strong>: When scrolling horizontally, the left metadata columns stay frozen to keep your view organized. On mobile devices, only the "Account" column remains frozen to maximize the screen space.</li>
+            <li><strong>Interactive Filters</strong>: Selecting a different Site or Team dynamically filters the rows and updates all summary totals and variance performance badges in real time.</li>
+            <li><strong>Variance Performance Highlights</strong>: Clear green and red badges show budget performance at a glance. Green indicates budget savings (under-spend), and red indicates an overspend.</li>
           </ul>
         </section>
       </div>
