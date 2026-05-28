@@ -9,6 +9,42 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
+    <script>
+      window.addEventListener('error', function(event) {
+        var errDiv = document.createElement('div');
+        errDiv.style.position = 'fixed';
+        errDiv.style.top = '0';
+        errDiv.style.left = '0';
+        errDiv.style.width = '100%';
+        errDiv.style.background = '#d32f2f';
+        errDiv.style.color = '#ffffff';
+        errDiv.style.padding = '12px';
+        errDiv.style.zIndex = '99999';
+        errDiv.style.fontSize = '12px';
+        errDiv.style.fontWeight = 'bold';
+        errDiv.style.fontFamily = 'monospace';
+        errDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.5)';
+        errDiv.innerText = '⚠️ Browser JS Error: ' + event.message + '\nFile: ' + event.filename + '\nLine: ' + event.lineno;
+        document.body.appendChild(errDiv);
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        var errDiv = document.createElement('div');
+        errDiv.style.position = 'fixed';
+        errDiv.style.top = '0';
+        errDiv.style.left = '0';
+        errDiv.style.width = '100%';
+        errDiv.style.background = '#d32f2f';
+        errDiv.style.color = '#ffffff';
+        errDiv.style.padding = '12px';
+        errDiv.style.zIndex = '99999';
+        errDiv.style.fontSize = '12px';
+        errDiv.style.fontWeight = 'bold';
+        errDiv.style.fontFamily = 'monospace';
+        errDiv.style.boxShadow = '0 4px 12px rgba(0,0,0,0.5)';
+        errDiv.innerText = '⚠️ Promise Rejection: ' + event.reason;
+        document.body.appendChild(errDiv);
+      });
+    </script>
     <app-root></app-root>
   </body>
 </html>
