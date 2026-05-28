@@ -59,9 +59,17 @@
     <div class="table-container">
       <table class="cost-table">
         <thead>
-          <!-- Top Row Span Headers -->
+          <!-- Top Row Span Headers (Resolved sticky overlapping by splitting metadata header) -->
           <tr class="header-super">
-            <th colspan="8" class="sticky-col-header first-header-group">Cost Center Metadata</th>
+            <th class="sticky-col col-1 super-header-cell super-header-title">Cost Center Metadata</th>
+            <th class="sticky-col col-2 super-header-cell"></th>
+            <th class="sticky-col col-3 super-header-cell"></th>
+            <th class="sticky-col col-4 super-header-cell"></th>
+            <th class="sticky-col col-5 super-header-cell"></th>
+            <th class="sticky-col col-6 super-header-cell"></th>
+            <th class="sticky-col col-7 super-header-cell"></th>
+            <th class="sticky-col col-8 super-header-cell last-metadata-col"></th>
+            
             <th [attr.colspan]="scenarios.length" class="scenarios-header-span">Forecast / Actual Scenarios</th>
             <th colspan="3" class="variance-header-span">Variance</th>
           </tr>
@@ -114,8 +122,8 @@
         </thead>
         
         <tbody>
-          <!-- Rows Rendering Loop -->
-          <ng-container *ngFor="let row of costRows">
+          <!-- Rows Rendering Loop (Binds to filteredCostRows for dynamic updates) -->
+          <ng-container *ngFor="let row of filteredCostRows">
             
             <!-- Parent Category Row -->
             <tr class="parent-row" [class.is-expanded]="isExpanded(row.id)">

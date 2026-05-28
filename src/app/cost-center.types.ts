@@ -14,6 +14,9 @@ export interface CostRow {
   isExpandable: boolean;
   children?: CostRow[];
   parentId?: string;
+  // Site and Team metadata for reactive filtering
+  site?: string;
+  team?: string;
 }
 
 export type ScenarioType = 'Actual' | 'Predicted' | 'RFC 1' | 'RFC 2' | 'RFC 3' | 'RFC 4';

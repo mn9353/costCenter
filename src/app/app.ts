@@ -13,9 +13,9 @@ import { CostRow, Scenario, ScenarioType, VarianceColumn } from './cost-center.t
 export class App implements OnInit {
   title = 'cost-center';
 
-  // Site and Team drop-down selections (visual only)
-  sites = ['Site A - Crown Manufacturing', 'Site B - Plant 2', 'Site C - ERP Core'];
-  selectedSite = 'Site A - Crown Manufacturing';
+  // Site and Team drop-down selections
+  sites = ['All Sites', 'Site A - Crown Manufacturing', 'Site B - Plant 2', 'Site C - ERP Core'];
+  selectedSite = 'All Sites';
   
   teams = ['All Teams', 'Operations', 'Finance', 'IT Support', 'Supply Chain'];
   selectedTeam = 'All Teams';
@@ -44,7 +44,7 @@ export class App implements OnInit {
   // Row Expand/Collapse State
   expandedCategories = new Set<string>(['Consultancy', 'Training', 'IT Subscription']);
 
-  // Cost Center Rows
+  // Cost Center Rows (Source data)
   costRows: CostRow[] = [];
 
   // Modal State
@@ -64,7 +64,7 @@ export class App implements OnInit {
     this.initializeData();
   }
 
-  // Prepopulate with realistic dummy data
+  // Prepopulate with realistic dummy data with site and team properties
   initializeData() {
     this.costRows = [
       {
@@ -86,6 +86,8 @@ export class App implements OnInit {
             itemDescription: 'SAP Process Consulting',
             isParent: false,
             isExpandable: false,
+            site: 'Site A - Crown Manufacturing',
+            team: 'Finance',
             values: {
               'Actual-2024': 120000,
               'Actual-2025': 135000,
@@ -106,6 +108,8 @@ export class App implements OnInit {
             itemDescription: 'Plant Efficiency Consulting',
             isParent: false,
             isExpandable: false,
+            site: 'Site B - Plant 2',
+            team: 'Supply Chain',
             values: {
               'Actual-2024': 85000,
               'Actual-2025': 92000,
@@ -135,6 +139,8 @@ export class App implements OnInit {
             itemDescription: 'Plant Safety Training',
             isParent: false,
             isExpandable: false,
+            site: 'Site B - Plant 2',
+            team: 'Operations',
             values: {
               'Actual-2024': 45000,
               'Actual-2025': 52000,
@@ -155,6 +161,8 @@ export class App implements OnInit {
             itemDescription: 'ISO Compliance Workshop',
             isParent: false,
             isExpandable: false,
+            site: 'Site A - Crown Manufacturing',
+            team: 'Operations',
             values: {
               'Actual-2024': 30000,
               'Actual-2025': 31000,
@@ -184,6 +192,8 @@ export class App implements OnInit {
             itemDescription: 'SAP Developer Support',
             isParent: false,
             isExpandable: false,
+            site: 'Site C - ERP Core',
+            team: 'IT Support',
             values: {
               'Actual-2024': 120000,
               'Actual-2025': 135000,
@@ -204,6 +214,8 @@ export class App implements OnInit {
             itemDescription: 'Concur Integration Services',
             isParent: false,
             isExpandable: false,
+            site: 'Site A - Crown Manufacturing',
+            team: 'Finance',
             values: {
               'Actual-2024': 80000,
               'Actual-2025': 88000,
@@ -224,6 +236,8 @@ export class App implements OnInit {
             itemDescription: 'AI Reporting Services',
             isParent: false,
             isExpandable: false,
+            site: 'Site C - ERP Core',
+            team: 'IT Support',
             values: {
               'Actual-2024': 45000,
               'Actual-2025': 52000,
@@ -239,6 +253,8 @@ export class App implements OnInit {
         account: 'Travel',
         isParent: true,
         isExpandable: false,
+        site: 'Site B - Plant 2',
+        team: 'Operations',
         values: {
           'Actual-2024': 60000,
           'Actual-2025': 65000,
@@ -252,6 +268,8 @@ export class App implements OnInit {
         account: 'Hardware',
         isParent: true,
         isExpandable: false,
+        site: 'Site A - Crown Manufacturing',
+        team: 'IT Support',
         values: {
           'Actual-2024': 70000,
           'Actual-2025': 72000,
@@ -265,6 +283,8 @@ export class App implements OnInit {
         account: 'Network',
         isParent: true,
         isExpandable: false,
+        site: 'Site C - ERP Core',
+        team: 'IT Support',
         values: {
           'Actual-2024': 90000,
           'Actual-2025': 95000,
@@ -292,6 +312,42 @@ export class App implements OnInit {
     }
   }
 
+  // Reactive Getter to filter rows in real-time and compute parent-level sums dynamically
+  get filteredCostRows(): CostRow[] {
+    return this.costRows.map(row => {
+      if (row.isParent && row.isExpandable && row.children) {
+        // Filter child rows
+        const filteredChildren = row.children.filter(child => {
+          const matchesSite = this.selectedSite === 'All Sites' || child.site === this.selectedSite;
+          const matchesTeam = this.selectedTeam === 'All Teams' || child.team === this.selectedTeam;
+          return matchesSite && matchesTeam;
+        });
+
+        // Compute dynamic parent sums based on filtered children
+        const values: { [scenarioId: string]: number } = {};
+        for (const child of filteredChildren) {
+          for (const scenarioId in child.values) {
+            values[scenarioId] = (values[scenarioId] || 0) + child.values[scenarioId];
+          }
+        }
+
+        return {
+          ...row,
+          children: filteredChildren,
+          values
+        };
+      } else {
+        // Single row parent items
+        const matchesSite = this.selectedSite === 'All Sites' || row.site === this.selectedSite;
+        const matchesTeam = this.selectedTeam === 'All Teams' || row.team === this.selectedTeam;
+        if (matchesSite && matchesTeam) {
+          return row;
+        }
+        return null;
+      }
+    }).filter(row => row !== null && (!row.isExpandable || (row.children && row.children.length > 0))) as CostRow[];
+  }
+
   // Get scenario value for a specific row
   getRowValue(row: CostRow, scenarioId: string): number {
     return row.values[scenarioId] || 0;
@@ -301,7 +357,6 @@ export class App implements OnInit {
   getVarianceValue(row: CostRow, col: VarianceColumn): number {
     const leftVal = row.values[col.compareLeft] || 0;
     const rightVal = row.values[col.compareRight] || 0;
-    // Calculate Left - Right (Actual vs Forecast)
     return leftVal - rightVal;
   }
 
@@ -334,10 +389,10 @@ export class App implements OnInit {
     }
   }
 
-  // Get total sum for a scenario column across all top-level parents
+  // Get total sum for a scenario column across all active filtered rows
   getColumnTotal(scenarioId: string): number {
     let sum = 0;
-    for (const row of this.costRows) {
+    for (const row of this.filteredCostRows) {
       if (row.isParent) {
         sum += row.values[scenarioId] || 0;
       }
@@ -348,7 +403,7 @@ export class App implements OnInit {
   // Get total sum for a variance column
   getVarianceColumnTotal(col: VarianceColumn): number {
     let sum = 0;
-    for (const row of this.costRows) {
+    for (const row of this.filteredCostRows) {
       if (row.isParent) {
         sum += this.getVarianceValue(row, col);
       }
@@ -402,7 +457,7 @@ export class App implements OnInit {
     // Add scenario column
     this.scenarios.push(newScenario);
 
-    // Populate mock values for child rows and single rows
+    // Populate mock values for child rows and single rows in the master costRows
     for (const row of this.costRows) {
       if (row.isParent && row.isExpandable && row.children) {
         for (const child of row.children) {
@@ -413,31 +468,26 @@ export class App implements OnInit {
       }
     }
 
-    // Recompute parent values
+    // Recompute parent values on master list
     this.calculateParentTotals();
 
-    // Dynamically adjust variance comparison rules if needed
-    // E.g., replace comparison rules to use the new scenario if it fits
     this.closeAddScenario();
   }
 
   // Helper to generate realistic data based on scenario type and year
   generateMockValue(row: CostRow, type: ScenarioType, year: number): number {
-    // Generate base values based on Row description
     const baseVal = row.values['Actual-2024'] || 70000;
     const yearDiff = year - 2024;
     
-    // Apply compound yearly growth/variance factor depending on type
     let factor = 1.0;
     if (type === 'Actual') {
-      factor = 1.0 + (yearDiff * 0.05); // 5% growth per year
+      factor = 1.0 + (yearDiff * 0.05);
     } else if (type.startsWith('RFC')) {
-      factor = 1.0 + (yearDiff * 0.04); // 4% forecast
+      factor = 1.0 + (yearDiff * 0.04);
     } else {
-      factor = 1.0 + (yearDiff * 0.03); // 3% prediction
+      factor = 1.0 + (yearDiff * 0.03);
     }
     
-    // Apply slight random deviation +/- 8% to make figures look authentic
     const deviation = 0.92 + (Math.random() * 0.16);
     return Math.round((baseVal * factor * deviation) / 100) * 100;
   }
@@ -449,7 +499,6 @@ export class App implements OnInit {
     if (event.dataTransfer) {
       event.dataTransfer.effectAllowed = 'move';
       event.dataTransfer.setData('text/plain', index.toString());
-      // Set empty/custom drag image if desired, or let the browser use default
     }
   }
 
@@ -464,7 +513,6 @@ export class App implements OnInit {
     event.preventDefault();
     if (this.draggedColIndex !== null && this.draggedColIndex !== index) {
       const draggedScenario = this.scenarios[this.draggedColIndex];
-      // Splice scenario from old index and insert into new index
       this.scenarios.splice(this.draggedColIndex, 1);
       this.scenarios.splice(index, 0, draggedScenario);
     }
