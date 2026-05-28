@@ -198,6 +198,7 @@ input:checked + .slider:before {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 100%; /* Force full width of parent container */
   height: 100%;
   border: 1px solid var(--border-color);
   background-color: var(--bg-color-card);
@@ -225,6 +226,7 @@ input:checked + .slider:before {
 /* Right Pane (Scenarios) - Scrollable horizontally */
 .scenarios-pane {
   flex: 1 1 auto;
+  min-width: 0; /* Allow the pane to shrink and trigger horizontal scrollbar on smaller screens */
   overflow-x: auto;
   overflow-y: hidden;
   background-color: var(--bg-color-card);
@@ -293,7 +295,7 @@ input:checked + .slider:before {
 }
 
 .header-sub, .header-sub th {
-  height: 34px !important;
+  height: 52px !important;
 }
 
 .header-sub th {
