@@ -101,7 +101,7 @@
                   style="cursor: pointer;">
                 <td class="col-1 font-bold">
                   <div class="account-cell-content">
-                    <button *ngIf="row.isExpandable" class="btn-expand" [attr.aria-label]="'Toggle ' + row.account" (click)="toggleCategory(row.id); $event.stopPropagation()">
+                    <button *ngIf="row.isExpandable" class="btn-expand" [attr.aria-label]="'Toggle ' + row.account" type="button" style="pointer-events: none;">
                       <span class="chevron-icon" [class.expanded]="isExpanded(row.id)">
                         <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
                           <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
