@@ -16,6 +16,9 @@ export class App implements OnInit {
   // Navigation View state
   activePage: 'dashboard' | 'documentation' = 'dashboard';
 
+  // Hovered Row Id tracking to synchronize split grid row hover effects
+  hoveredRowId: string | null = null;
+
   setView(view: 'dashboard' | 'documentation') {
     this.activePage = view;
   }

@@ -56,180 +56,255 @@
     </div>
   </div>
 
-  <!-- Dashboard Grid / Table Area (Visible only on Dashboard view) -->
+  <!-- Dashboard Split Grid Wrapper (Visible only on Dashboard view) -->
   <div class="table-outer-wrapper" *ngIf="activePage === 'dashboard'">
-    <div class="table-container">
-      <table class="cost-table">
-        <thead>
-          <!-- Top Row Span Headers (Resolved sticky overlapping by splitting metadata header) -->
-          <tr class="header-super">
-            <th class="sticky-col col-1 super-header-cell super-header-title">Cost Center Metadata</th>
-            <th class="sticky-col col-2 super-header-cell"></th>
-            <th class="sticky-col col-3 super-header-cell"></th>
-            <th class="sticky-col col-4 super-header-cell"></th>
-            <th class="sticky-col col-5 super-header-cell"></th>
-            <th class="sticky-col col-6 super-header-cell"></th>
-            <th class="sticky-col col-7 super-header-cell"></th>
-            <th class="sticky-col col-8 super-header-cell last-metadata-col"></th>
-            
-            <th [attr.colspan]="scenarios.length" class="scenarios-header-span">Forecast / Actual Scenarios</th>
-            <th colspan="3" class="variance-header-span">Variance</th>
-          </tr>
-          
-          <!-- Column Specific Headers -->
-          <tr class="header-sub">
-            <!-- Pinned Left Metadata Headers -->
-            <th class="sticky-col col-1">Account</th>
-            <th class="sticky-col col-2">Spend Type</th>
-            <th class="sticky-col col-3">Spend Layer</th>
-            <th class="sticky-col col-4">Category</th>
-            <th class="sticky-col col-5">System</th>
-            <th class="sticky-col col-6">Supplier</th>
-            <th class="sticky-col col-7">Internal Order</th>
-            <th class="sticky-col col-8">Item Description</th>
-            
-            <!-- Dynamic Draggable Scenario Columns -->
-            <th *ngFor="let scenario of scenarios; let i = index"
-                class="scenario-header-cell"
-                draggable="true"
-                (dragstart)="onDragStart($event, i)"
-                (dragover)="onDragOver($event, i)"
-                (drop)="onDrop($event, i)"
-                (dragend)="onDragEnd()"
-                [class.dragging]="draggedColIndex === i"
-                [class.drag-over-left]="dragOverColIndex === i && draggedColIndex !== null && draggedColIndex > i"
-                [class.drag-over-right]="dragOverColIndex === i && draggedColIndex !== null && draggedColIndex < i"
-            >
-              <div class="header-drag-content">
-                <div class="drag-indicator">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                    <path d="M8.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM15.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-                  </svg>
-                </div>
-                <div class="title-meta">
-                  <span class="scenario-type">{{ scenario.type }}</span>
-                  <span class="scenario-year">{{ scenario.year }}</span>
-                </div>
-              </div>
-            </th>
-
-            <!-- Variance Columns -->
-            <th *ngFor="let vCol of varianceCols" class="variance-header-cell">
-              <div class="variance-header-content">
-                <span class="variance-title">Variance</span>
-                <span class="variance-formula">{{ vCol.label }}</span>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <!-- Rows Rendering Loop (Binds to filteredCostRows for dynamic updates) -->
-          <ng-container *ngFor="let row of filteredCostRows">
-            
-            <!-- Parent Category Row -->
-            <tr class="parent-row" [class.is-expanded]="isExpanded(row.id)">
-              <!-- Account Name (Expandable Chevron if applicable) -->
-              <td class="sticky-col col-1 font-bold">
-                <div class="account-cell-content">
-                  <button *ngIf="row.isExpandable" class="btn-expand" (click)="toggleCategory(row.id)" [attr.aria-label]="'Toggle ' + row.account">
-                    <span class="chevron-icon" [class.expanded]="isExpanded(row.id)">
-                      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
-                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-                      </svg>
-                    </span>
-                  </button>
-                  <span class="account-name">{{ row.account }}</span>
-                </div>
-              </td>
-              
-              <!-- Pinned Metadata cells are blank for group headers -->
-              <td class="sticky-col col-2"></td>
-              <td class="sticky-col col-3"></td>
-              <td class="sticky-col col-4"></td>
-              <td class="sticky-col col-5"></td>
-              <td class="sticky-col col-6"></td>
-              <td class="sticky-col col-7"></td>
-              <td class="sticky-col col-8"></td>
-              
-              <!-- Calculated totals for parent rows across dynamic columns -->
-              <td *ngFor="let scenario of scenarios" class="number-cell font-bold parent-value-cell">
-                {{ getRowValue(row, scenario.id) / 1000 | number:'1.0-0' }}k
-              </td>
-
-              <!-- Calculated variance for parent rows -->
-              <td *ngFor="let vCol of varianceCols" class="variance-cell parent-value-cell">
-                <div class="variance-badge-wrapper">
-                  <span [class]="getVarianceBadgeClass(row, vCol)">
-                    {{ getFormattedVariance(row, vCol) }}
-                  </span>
-                </div>
-              </td>
+    <div class="grid-split-container">
+      
+      <!-- Left Fixed Pane: Contains only metadata columns (1 to 8) -->
+      <div class="metadata-pane">
+        <table class="cost-table metadata-table">
+          <thead>
+            <tr class="header-super">
+              <th class="super-header-cell super-header-title">Cost Center Metadata</th>
+              <th class="super-header-cell"></th>
+              <th class="super-header-cell"></th>
+              <th class="super-header-cell"></th>
+              <th class="super-header-cell"></th>
+              <th class="super-header-cell"></th>
+              <th class="super-header-cell"></th>
+              <th class="super-header-cell last-metadata-col"></th>
             </tr>
-
-            <!-- Nested Child Rows (Rendered if parent expanded) -->
-            <ng-container *ngIf="row.isExpandable && isExpanded(row.id)">
-              <tr *ngFor="let child of row.children" class="child-row">
-                <!-- Account column is empty for child rows -->
-                <td class="sticky-col col-1 child-row-indent"></td>
-                
-                <td class="sticky-col col-2">{{ child.spendType }}</td>
-                <td class="sticky-col col-3">{{ child.spendLayer }}</td>
-                <td class="sticky-col col-4">{{ child.category }}</td>
-                <td class="sticky-col col-5">{{ child.system }}</td>
-                <td class="sticky-col col-6">{{ child.supplier }}</td>
-                <td class="sticky-col col-7">{{ child.internalOrder }}</td>
-                <td class="sticky-col col-8 truncate-text" [title]="child.itemDescription || ''">
-                  {{ child.itemDescription }}
+            <tr class="header-sub">
+              <th class="col-1">Account</th>
+              <th class="col-2">Spend Type</th>
+              <th class="col-3">Spend Layer</th>
+              <th class="col-4">Category</th>
+              <th class="col-5">System</th>
+              <th class="col-6">Supplier</th>
+              <th class="col-7">Internal Order</th>
+              <th class="col-8">Item Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let row of filteredCostRows">
+              <!-- Parent Row -->
+              <tr class="parent-row" 
+                  [class.is-expanded]="isExpanded(row.id)"
+                  [class.row-hovered]="hoveredRowId === row.id"
+                  (mouseenter)="hoveredRowId = row.id"
+                  (mouseleave)="hoveredRowId = null">
+                <td class="col-1 font-bold">
+                  <div class="account-cell-content">
+                    <button *ngIf="row.isExpandable" class="btn-expand" (click)="toggleCategory(row.id)" [attr.aria-label]="'Toggle ' + row.account">
+                      <span class="chevron-icon" [class.expanded]="isExpanded(row.id)">
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                        </svg>
+                      </span>
+                    </button>
+                    <span class="account-name">{{ row.account }}</span>
+                  </div>
                 </td>
-                
-                <!-- Financial scenario values -->
-                <td *ngFor="let scenario of scenarios" class="number-cell">
-                  {{ getRowValue(child, scenario.id) / 1000 | number:'1.0-0' }}k
+                <td class="col-2"></td>
+                <td class="col-3"></td>
+                <td class="col-4"></td>
+                <td class="col-5"></td>
+                <td class="col-6"></td>
+                <td class="col-7"></td>
+                <td class="col-8"></td>
+              </tr>
+              <!-- Child Rows -->
+              <ng-container *ngIf="row.isExpandable && isExpanded(row.id)">
+                <tr *ngFor="let child of row.children" 
+                    class="child-row"
+                    [class.row-hovered]="hoveredRowId === child.id"
+                    (mouseenter)="hoveredRowId = child.id"
+                    (mouseleave)="hoveredRowId = null">
+                  <td class="col-1 child-row-indent"></td>
+                  <td class="col-2">{{ child.spendType }}</td>
+                  <td class="col-3">{{ child.spendLayer }}</td>
+                  <td class="col-4">{{ child.category }}</td>
+                  <td class="col-5">{{ child.system }}</td>
+                  <td class="col-6">{{ child.supplier }}</td>
+                  <td class="col-7">{{ child.internalOrder }}</td>
+                  <td class="col-8 truncate-text" [title]="child.itemDescription || ''">
+                    {{ child.itemDescription }}
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+          </tbody>
+          <tfoot>
+            <tr class="total-row font-bold" 
+                [class.row-hovered]="hoveredRowId === 'TOTAL'"
+                (mouseenter)="hoveredRowId = 'TOTAL'"
+                (mouseleave)="hoveredRowId = null">
+              <td class="col-1">TOTAL</td>
+              <td class="col-2"></td>
+              <td class="col-3"></td>
+              <td class="col-4"></td>
+              <td class="col-5"></td>
+              <td class="col-6"></td>
+              <td class="col-7"></td>
+              <td class="col-8"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Right Scrollable Pane: Contains scenarios and variance, plus mobile-responsive metadata columns (2 to 8) -->
+      <div class="scenarios-pane">
+        <table class="cost-table scenarios-table">
+          <thead>
+            <tr class="header-super">
+              <!-- Mobile only metadata column spans -->
+              <th colspan="7" class="mobile-only-col super-header-cell">Cost Center Metadata</th>
+              <th [attr.colspan]="scenarios.length" class="scenarios-header-span">Forecast / Actual Scenarios</th>
+              <th colspan="3" class="variance-header-span">Variance</th>
+            </tr>
+            <tr class="header-sub">
+              <!-- Mobile only sub headers for metadata columns 2 to 8 -->
+              <th class="mobile-only-col col-2">Spend Type</th>
+              <th class="mobile-only-col col-3">Spend Layer</th>
+              <th class="mobile-only-col col-4">Category</th>
+              <th class="mobile-only-col col-5">System</th>
+              <th class="mobile-only-col col-6">Supplier</th>
+              <th class="mobile-only-col col-7">Internal Order</th>
+              <th class="mobile-only-col col-8">Item Description</th>
+
+              <!-- Dynamic Draggable Scenario Columns -->
+              <th *ngFor="let scenario of scenarios; let i = index"
+                  class="scenario-header-cell"
+                  draggable="true"
+                  (dragstart)="onDragStart($event, i)"
+                  (dragover)="onDragOver($event, i)"
+                  (drop)="onDrop($event, i)"
+                  (dragend)="onDragEnd()"
+                  [class.dragging]="draggedColIndex === i"
+                  [class.drag-over-left]="dragOverColIndex === i && draggedColIndex !== null && draggedColIndex > i"
+                  [class.drag-over-right]="dragOverColIndex === i && draggedColIndex !== null && draggedColIndex < i"
+              >
+                <div class="header-drag-content">
+                  <div class="drag-indicator">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                      <path d="M8.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM15.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                    </svg>
+                  </div>
+                  <div class="title-meta">
+                    <span class="scenario-type">{{ scenario.type }}</span>
+                    <span class="scenario-year">{{ scenario.year }}</span>
+                  </div>
+                </div>
+              </th>
+
+              <!-- Variance Columns -->
+              <th *ngFor="let vCol of varianceCols" class="variance-header-cell">
+                <div class="variance-header-content">
+                  <span class="variance-title">Variance</span>
+                  <span class="variance-formula">{{ vCol.label }}</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let row of filteredCostRows">
+              <!-- Parent Row -->
+              <tr class="parent-row" 
+                  [class.is-expanded]="isExpanded(row.id)"
+                  [class.row-hovered]="hoveredRowId === row.id"
+                  (mouseenter)="hoveredRowId = row.id"
+                  (mouseleave)="hoveredRowId = null">
+                <!-- Mobile only empty space cells for parent rows -->
+                <td class="mobile-only-col col-2"></td>
+                <td class="mobile-only-col col-3"></td>
+                <td class="mobile-only-col col-4"></td>
+                <td class="mobile-only-col col-5"></td>
+                <td class="mobile-only-col col-6"></td>
+                <td class="mobile-only-col col-7"></td>
+                <td class="mobile-only-col col-8"></td>
+
+                <!-- Parent totals across dynamic columns -->
+                <td *ngFor="let scenario of scenarios" class="number-cell font-bold parent-value-cell">
+                  {{ getRowValue(row, scenario.id) / 1000 | number:'1.0-0' }}k
                 </td>
 
-                <!-- Variance scenario values -->
-                <td *ngFor="let vCol of varianceCols" class="variance-cell">
+                <!-- Calculated variance for parent rows -->
+                <td *ngFor="let vCol of varianceCols" class="variance-cell parent-value-cell">
                   <div class="variance-badge-wrapper">
-                    <span [class]="getVarianceBadgeClass(child, vCol)">
-                      {{ getFormattedVariance(child, vCol) }}
+                    <span [class]="getVarianceBadgeClass(row, vCol)">
+                      {{ getFormattedVariance(row, vCol) }}
                     </span>
                   </div>
                 </td>
               </tr>
+
+              <!-- Nested Child Rows -->
+              <ng-container *ngIf="row.isExpandable && isExpanded(row.id)">
+                <tr *ngFor="let child of row.children" 
+                    class="child-row"
+                    [class.row-hovered]="hoveredRowId === child.id"
+                    (mouseenter)="hoveredRowId = child.id"
+                    (mouseleave)="hoveredRowId = null">
+                  <!-- Mobile only metadata cells for child rows -->
+                  <td class="mobile-only-col col-2">{{ child.spendType }}</td>
+                  <td class="mobile-only-col col-3">{{ child.spendLayer }}</td>
+                  <td class="mobile-only-col col-4">{{ child.category }}</td>
+                  <td class="mobile-only-col col-5">{{ child.system }}</td>
+                  <td class="mobile-only-col col-6">{{ child.supplier }}</td>
+                  <td class="mobile-only-col col-7">{{ child.internalOrder }}</td>
+                  <td class="mobile-only-col col-8 truncate-text" [title]="child.itemDescription || ''">
+                    {{ child.itemDescription }}
+                  </td>
+
+                  <!-- Financial scenario values -->
+                  <td *ngFor="let scenario of scenarios" class="number-cell">
+                    {{ getRowValue(child, scenario.id) / 1000 | number:'1.0-0' }}k
+                  </td>
+
+                  <!-- Variance scenario values -->
+                  <td *ngFor="let vCol of varianceCols" class="variance-cell">
+                    <div class="variance-badge-wrapper">
+                      <span [class]="getVarianceBadgeClass(child, vCol)">
+                        {{ getFormattedVariance(child, vCol) }}
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </ng-container>
             </ng-container>
+          </tbody>
+          <tfoot>
+            <tr class="total-row font-bold" 
+                [class.row-hovered]="hoveredRowId === 'TOTAL'"
+                (mouseenter)="hoveredRowId = 'TOTAL'"
+                (mouseleave)="hoveredRowId = null">
+              <!-- Mobile only empty space cells for total row -->
+              <td class="mobile-only-col col-2"></td>
+              <td class="mobile-only-col col-3"></td>
+              <td class="mobile-only-col col-4"></td>
+              <td class="mobile-only-col col-5"></td>
+              <td class="mobile-only-col col-6"></td>
+              <td class="mobile-only-col col-7"></td>
+              <td class="mobile-only-col col-8"></td>
 
-          </ng-container>
-        </tbody>
+              <!-- Dynamic scenario columns grand totals -->
+              <td *ngFor="let scenario of scenarios" class="number-cell total-val">
+                {{ getColumnTotal(scenario.id) / 1000 | number:'1.0-0' }}k
+              </td>
 
-        <!-- Table Sticky Summary Footer -->
-        <tfoot>
-          <tr class="total-row font-bold">
-            <td class="sticky-col col-1">TOTAL</td>
-            <td class="sticky-col col-2"></td>
-            <td class="sticky-col col-3"></td>
-            <td class="sticky-col col-4"></td>
-            <td class="sticky-col col-5"></td>
-            <td class="sticky-col col-6"></td>
-            <td class="sticky-col col-7"></td>
-            <td class="sticky-col col-8"></td>
-            
-            <!-- Dynamic scenario columns grand totals -->
-            <td *ngFor="let scenario of scenarios" class="number-cell total-val">
-              {{ getColumnTotal(scenario.id) / 1000 | number:'1.0-0' }}k
-            </td>
+              <!-- Grand variance totals -->
+              <td *ngFor="let vCol of varianceCols" class="variance-cell total-val">
+                <div class="variance-badge-wrapper">
+                  <span [class]="getVarianceTotalBadgeClass(vCol)">
+                    {{ getFormattedVarianceTotal(vCol) }}
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
-            <!-- Grand variance totals -->
-            <td *ngFor="let vCol of varianceCols" class="variance-cell total-val">
-              <div class="variance-badge-wrapper">
-                <span [class]="getVarianceTotalBadgeClass(vCol)">
-                  {{ getFormattedVarianceTotal(vCol) }}
-                </span>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
     </div>
   </div>
 
@@ -249,10 +324,67 @@
           </p>
         </section>
 
+        <!-- Visual Roadmap/Timeline Diagram for RFC and H1/H2 -->
         <section class="docs-section">
-          <h3>Revised Forecast Scenarios (RFC)</h3>
+          <h3>Visual Planning Horizon: RFC & Quarter Timeline</h3>
           <p>
-            In corporate finance, <strong>RFC</strong> stands for <strong>Revised Forecast Scenario</strong> (or Re-Forecast). A forecast is never static; it is updated periodically throughout the fiscal year as actual spending data becomes available:
+            The diagram below illustrates how budget horizons are split into Half-Year intervals (H1 & H2) and when the quarterly Revised Forecast Scenarios (RFC 1-4) are compiled throughout the fiscal cycle:
+          </p>
+          
+          <div class="visual-timeline-wrapper">
+            <!-- Top H1 / H2 bar track -->
+            <div class="timeline-halves">
+              <div class="half-block h1-bg">
+                <span class="half-title">H1 (First Half: Jan - Jun)</span>
+                <div class="half-track"></div>
+              </div>
+              <div class="half-block h2-bg">
+                <span class="half-title">H2 (Second Half: Jul - Dec)</span>
+                <div class="half-track"></div>
+              </div>
+            </div>
+            
+            <!-- Nodes representing the forecast updating points -->
+            <div class="timeline-nodes">
+              <div class="timeline-node" style="left: 25%;">
+                <div class="node-dot">Q1</div>
+                <div class="node-label">
+                  <span class="node-tag">RFC 1</span>
+                  <span class="node-desc">March Review</span>
+                </div>
+              </div>
+              
+              <div class="timeline-node" style="left: 50%;">
+                <div class="node-dot active-mid">Q2</div>
+                <div class="node-label">
+                  <span class="node-tag">RFC 2</span>
+                  <span class="node-desc">June Mid-Year</span>
+                </div>
+              </div>
+              
+              <div class="timeline-node" style="left: 75%;">
+                <div class="node-dot">Q3</div>
+                <div class="node-label">
+                  <span class="node-tag">RFC 3</span>
+                  <span class="node-desc">September Review</span>
+                </div>
+              </div>
+              
+              <div class="timeline-node" style="left: 100%;">
+                <div class="node-dot">Q4</div>
+                <div class="node-label">
+                  <span class="node-tag">RFC 4</span>
+                  <span class="node-desc">December Close</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section" style="margin-top: 40px;">
+          <h3>Revised Forecast Scenarios (RFC) Details</h3>
+          <p>
+            In corporate finance, a forecast is never static; it is updated periodically throughout the fiscal year as actual spending data becomes available:
           </p>
           <div class="docs-grid">
             <div class="docs-box">
@@ -275,7 +407,7 @@
         </section>
 
         <section class="docs-section">
-          <h3>Time Horizons: H1 and H2</h3>
+          <h3>Time Horizons: H1 and H2 Details</h3>
           <p>
             Budget cycles are split into half-years to measure performance trends and implement mid-course adjustments:
           </p>
