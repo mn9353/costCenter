@@ -208,10 +208,10 @@ input:checked + .slider:before {
 .grid-split-container {
   display: flex;
   width: 100%;
-  height: fit-content;
+  min-height: 100%;
   background-color: transparent;
   overflow: hidden;
-  align-items: flex-start; /* Prevent vertical stretching due to right-pane scrollbars */
+  align-items: stretch;
 }
 
 /* Left Pane (Metadata) - Static, no scroll */
@@ -221,6 +221,8 @@ input:checked + .slider:before {
   overflow: hidden;
   border-right: 2px solid var(--border-color-active);
   background-color: var(--bg-color-card);
+  display: flex;
+  flex-direction: column;
 }
 
 /* Right Pane (Scenarios) - Scrollable horizontally */
@@ -230,6 +232,8 @@ input:checked + .slider:before {
   overflow-x: auto;
   overflow-y: hidden;
   background-color: var(--bg-color-card);
+  display: flex;
+  flex-direction: column;
 }
 
 /* Table general styles - Fixed Layout enforces explicit widths */
@@ -241,10 +245,22 @@ input:checked + .slider:before {
 
 .metadata-table {
   width: 990px;
+  height: 100%;
+  flex: 1 0 auto;
 }
 
 .scenarios-table {
   width: max-content; /* Prevents squeezing columns, forces scrollbar */
+  height: 100%;
+  flex: 1 0 auto;
+}
+
+/* Spacer row to absorb vertical height and push footer to bottom */
+.spacer-row, .spacer-row td {
+  height: auto !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
 }
 
 /* Scrollbar corner styling to fix white corner block */
