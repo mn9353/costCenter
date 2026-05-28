@@ -1,0 +1,262 @@
+<div class="app-container">
+  <!-- Top Platform Header -->
+  <header class="main-header">
+    <div class="logo-area">
+      <h1 class="company-name">CROWN MANUFACTURING</h1>
+      <span class="divider">|</span>
+      <span class="platform-name">Performance Hub</span>
+    </div>
+    <div class="system-badge">Cost Management Dashboard</div>
+  </header>
+
+  <!-- Control Bar -->
+  <div class="control-bar">
+    <!-- Left Filters -->
+    <div class="filter-group left-filters">
+      <div class="filter-item">
+        <label for="site-selector">Site and One Stream code</label>
+        <select id="site-selector" class="form-select" [(ngModel)]="selectedSite">
+          <option *ngFor="let site of sites" [value]="site">{{ site }}</option>
+        </select>
+      </div>
+
+      <div class="filter-item">
+        <label for="team-selector">Team</label>
+        <select id="team-selector" class="form-select" [(ngModel)]="selectedTeam">
+          <option *ngFor="let team of teams" [value]="team">{{ team }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Center Add Scenario Button -->
+    <div class="action-group-center">
+      <button id="btn-open-add-scenario" class="btn-add-scenario btn-primary glow-teal" (click)="openAddScenario()">
+        <span class="btn-icon">+</span> Add Scenario
+      </button>
+    </div>
+
+    <!-- Right Controls / Toggle -->
+    <div class="filter-group right-controls">
+      <div class="toggle-container">
+        <span class="toggle-label">Show Other Forecast Scenario</span>
+        <label class="switch">
+          <input id="toggle-other-forecast" type="checkbox" [(ngModel)]="showOtherForecast">
+          <span class="slider"></span>
+        </label>
+      </div>
+      
+      <div class="filter-item year-filter" [class.disabled]="!showOtherForecast">
+        <label for="other-year-selector">Other Scenario Year</label>
+        <select id="other-year-selector" class="form-select" [(ngModel)]="otherScenarioYear" [disabled]="!showOtherForecast">
+          <option *ngFor="let yr of otherScenarioYears" [value]="yr">{{ yr }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard Grid / Table Area -->
+  <div class="table-outer-wrapper">
+    <div class="table-container">
+      <table class="cost-table">
+        <thead>
+          <!-- Top Row Span Headers -->
+          <tr class="header-super">
+            <th colspan="8" class="sticky-col-header first-header-group">Cost Center Metadata</th>
+            <th [attr.colspan]="scenarios.length" class="scenarios-header-span">Forecast / Actual Scenarios</th>
+            <th colspan="3" class="variance-header-span">Variance</th>
+          </tr>
+          
+          <!-- Column Specific Headers -->
+          <tr class="header-sub">
+            <!-- Pinned Left Metadata Headers -->
+            <th class="sticky-col col-1">Account</th>
+            <th class="sticky-col col-2">Spend Type</th>
+            <th class="sticky-col col-3">Spend Layer</th>
+            <th class="sticky-col col-4">Category</th>
+            <th class="sticky-col col-5">System</th>
+            <th class="sticky-col col-6">Supplier</th>
+            <th class="sticky-col col-7">Internal Order</th>
+            <th class="sticky-col col-8">Item Description</th>
+            
+            <!-- Dynamic Draggable Scenario Columns -->
+            <th *ngFor="let scenario of scenarios; let i = index"
+                class="scenario-header-cell"
+                draggable="true"
+                (dragstart)="onDragStart($event, i)"
+                (dragover)="onDragOver($event, i)"
+                (drop)="onDrop($event, i)"
+                (dragend)="onDragEnd()"
+                [class.dragging]="draggedColIndex === i"
+                [class.drag-over-left]="dragOverColIndex === i && draggedColIndex !== null && draggedColIndex > i"
+                [class.drag-over-right]="dragOverColIndex === i && draggedColIndex !== null && draggedColIndex < i"
+            >
+              <div class="header-drag-content">
+                <div class="drag-indicator">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M8.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM15.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 7.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                  </svg>
+                </div>
+                <div class="title-meta">
+                  <span class="scenario-type">{{ scenario.type }}</span>
+                  <span class="scenario-year">{{ scenario.year }}</span>
+                </div>
+              </div>
+            </th>
+
+            <!-- Variance Columns -->
+            <th *ngFor="let vCol of varianceCols" class="variance-header-cell">
+              <div class="variance-header-content">
+                <span class="variance-title">Variance</span>
+                <span class="variance-formula">{{ vCol.label }}</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <!-- Rows Rendering Loop -->
+          <ng-container *ngFor="let row of costRows">
+            
+            <!-- Parent Category Row -->
+            <tr class="parent-row" [class.is-expanded]="isExpanded(row.id)">
+              <!-- Account Name (Expandable Chevron if applicable) -->
+              <td class="sticky-col col-1 font-bold">
+                <div class="account-cell-content">
+                  <button *ngIf="row.isExpandable" class="btn-expand" (click)="toggleCategory(row.id)" [attr.aria-label]="'Toggle ' + row.account">
+                    <span class="chevron-icon" [class.expanded]="isExpanded(row.id)">
+                      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                      </svg>
+                    </span>
+                  </button>
+                  <span class="account-name">{{ row.account }}</span>
+                </div>
+              </td>
+              
+              <!-- Pinned Metadata cells are blank for group headers -->
+              <td class="sticky-col col-2"></td>
+              <td class="sticky-col col-3"></td>
+              <td class="sticky-col col-4"></td>
+              <td class="sticky-col col-5"></td>
+              <td class="sticky-col col-6"></td>
+              <td class="sticky-col col-7"></td>
+              <td class="sticky-col col-8"></td>
+              
+              <!-- Calculated totals for parent rows across dynamic columns -->
+              <td *ngFor="let scenario of scenarios" class="number-cell font-bold parent-value-cell">
+                {{ getRowValue(row, scenario.id) / 1000 | number:'1.0-0' }}k
+              </td>
+
+              <!-- Calculated variance for parent rows -->
+              <td *ngFor="let vCol of varianceCols" class="variance-cell parent-value-cell">
+                <div class="variance-badge-wrapper">
+                  <span [class]="getVarianceBadgeClass(row, vCol)">
+                    {{ getFormattedVariance(row, vCol) }}
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Nested Child Rows (Rendered if parent expanded) -->
+            <ng-container *ngIf="row.isExpandable && isExpanded(row.id)">
+              <tr *ngFor="let child of row.children" class="child-row">
+                <!-- Account column is empty for child rows -->
+                <td class="sticky-col col-1 child-row-indent"></td>
+                
+                <td class="sticky-col col-2">{{ child.spendType }}</td>
+                <td class="sticky-col col-3">{{ child.spendLayer }}</td>
+                <td class="sticky-col col-4">{{ child.category }}</td>
+                <td class="sticky-col col-5">{{ child.system }}</td>
+                <td class="sticky-col col-6">{{ child.supplier }}</td>
+                <td class="sticky-col col-7">{{ child.internalOrder }}</td>
+                <td class="sticky-col col-8 truncate-text" [title]="child.itemDescription || ''">
+                  {{ child.itemDescription }}
+                </td>
+                
+                <!-- Financial scenario values -->
+                <td *ngFor="let scenario of scenarios" class="number-cell">
+                  {{ getRowValue(child, scenario.id) / 1000 | number:'1.0-0' }}k
+                </td>
+
+                <!-- Variance scenario values -->
+                <td *ngFor="let vCol of varianceCols" class="variance-cell">
+                  <div class="variance-badge-wrapper">
+                    <span [class]="getVarianceBadgeClass(child, vCol)">
+                      {{ getFormattedVariance(child, vCol) }}
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+
+          </ng-container>
+        </tbody>
+
+        <!-- Table Sticky Summary Footer -->
+        <tfoot>
+          <tr class="total-row font-bold">
+            <td class="sticky-col col-1">TOTAL</td>
+            <td class="sticky-col col-2"></td>
+            <td class="sticky-col col-3"></td>
+            <td class="sticky-col col-4"></td>
+            <td class="sticky-col col-5"></td>
+            <td class="sticky-col col-6"></td>
+            <td class="sticky-col col-7"></td>
+            <td class="sticky-col col-8"></td>
+            
+            <!-- Dynamic scenario columns grand totals -->
+            <td *ngFor="let scenario of scenarios" class="number-cell total-val">
+              {{ getColumnTotal(scenario.id) / 1000 | number:'1.0-0' }}k
+            </td>
+
+            <!-- Grand variance totals -->
+            <td *ngFor="let vCol of varianceCols" class="variance-cell total-val">
+              <div class="variance-badge-wrapper">
+                <span [class]="getVarianceTotalBadgeClass(vCol)">
+                  {{ getFormattedVarianceTotal(vCol) }}
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- SAP-style Sticky Footer Control Bar -->
+  <footer class="app-footer">
+    <span class="user-context">Role: Cost Controller (Read-Only)</span>
+    <button id="btn-footer-close" class="btn-footer-close">Close Dashboard</button>
+  </footer>
+
+  <!-- Modal Dialog overlay -->
+  <div class="modal-backdrop" *ngIf="showAddScenarioModal" (click)="closeAddScenario()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Add Forecast Scenario</h3>
+        <button class="btn-modal-close" (click)="closeAddScenario()" aria-label="Close dialog">×</button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="modal-scenario-type">Scenario Type</label>
+          <select id="modal-scenario-type" class="form-select modal-select" [(ngModel)]="newScenarioType">
+            <option *ngFor="let type of scenarioTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="modal-scenario-year">Year</label>
+          <select id="modal-scenario-year" class="form-select modal-select" [(ngModel)]="newScenarioYear">
+            <option *ngFor="let yr of years" [value]="yr">{{ yr }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-modal-cancel" class="btn-cancel" (click)="closeAddScenario()">Cancel</button>
+        <button id="btn-modal-add" class="btn-primary btn-add" (click)="addScenario()">Add Scenario</button>
+      </div>
+    </div>
+  </div>
+</div>
