@@ -51,7 +51,9 @@ export class App implements OnInit {
     { id: 'v3', label: 'V3', compareLeft: 'Actual-2024', compareRight: 'RFC 1-2026' },
   ];
 
-  expandedCategories: { [key: string]: boolean } = {};
+  // Row Expand/Collapse State (Signal-based dictionary for reliable change detection in Zoneless mode)
+  expandedCategories = signal<{ [key: string]: boolean }>({});
+
 
   // Cost Center Rows (Source data)
   costRows: CostRow[] = [];
@@ -386,15 +388,15 @@ export class App implements OnInit {
 
   // Check if a category is expanded
   isExpanded(id: string): boolean {
-    return !!this.expandedCategories[id];
+    return !!this.expandedCategories()[id];
   }
 
   // Toggle category expand state
   toggleCategory(id: string) {
-    this.expandedCategories = {
-      ...this.expandedCategories,
-      [id]: !this.expandedCategories[id]
-    };
+    this.expandedCategories.update(state => ({
+      ...state,
+      [id]: !state[id]
+    }));
   }
 
   // Get total sum for a scenario column across all active filtered rows
