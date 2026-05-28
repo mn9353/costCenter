@@ -237,38 +237,15 @@ input:checked + .slider:before {
   flex-direction: column;
 }
 
-/* Align scrollbar presence and heights in Firefox */
+/* Hide scrollbars visually but retain scroll capability across Firefox and WebKit */
 .metadata-pane,
 .scenarios-pane {
-  scrollbar-width: thin;
+  scrollbar-width: none; /* Firefox */
 }
 
-.metadata-pane {
-  scrollbar-color: transparent transparent;
-}
-
-.scenarios-pane {
-  scrollbar-color: var(--border-color-active) rgba(4, 19, 36, 0.5);
-}
-
-/* WebKit custom scrollbar styling to enforce exact 10px height alignment */
 .metadata-pane::-webkit-scrollbar,
 .scenarios-pane::-webkit-scrollbar {
-  height: 10px;
-}
-
-.metadata-pane::-webkit-scrollbar-track,
-.metadata-pane::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-.scenarios-pane::-webkit-scrollbar-track {
-  background: rgba(4, 19, 36, 0.5);
-}
-
-.scenarios-pane::-webkit-scrollbar-thumb {
-  background: var(--border-color-active);
-  border-radius: 4px;
+  display: none; /* Chrome, Safari, Edge */
 }
 
 /* Table general styles - Fixed Layout enforces explicit widths */
