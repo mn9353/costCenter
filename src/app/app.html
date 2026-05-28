@@ -134,6 +134,9 @@
                 </tr>
               </ng-container>
             </ng-container>
+            <tr *ngIf="filteredCostRows.length === 0" class="no-rows-row">
+              <td colspan="8" class="no-rows-cell">No cost center data matching current filters</td>
+            </tr>
           </tbody>
           <tfoot>
             <tr class="total-row font-bold" 
@@ -273,6 +276,9 @@
                 </tr>
               </ng-container>
             </ng-container>
+            <tr *ngIf="filteredCostRows.length === 0" class="no-rows-row">
+              <td [attr.colspan]="scenarios.length + varianceCols.length + 7" class="no-rows-cell">No rows to show</td>
+            </tr>
           </tbody>
           <tfoot>
             <tr class="total-row font-bold" 

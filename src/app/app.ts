@@ -397,6 +397,8 @@ export class App implements OnInit {
     } else {
       this.expandedCategories.add(id);
     }
+    // Reassign reference to trigger Angular change detection
+    this.expandedCategories = new Set(this.expandedCategories);
   }
 
   // Get total sum for a scenario column across all active filtered rows
