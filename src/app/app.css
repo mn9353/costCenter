@@ -451,7 +451,7 @@ input:checked + .slider:before {
 }
 
 /* Row-level hovering matches sticky columns colors */
-.cost-table tbody tr:hover {
+.cost-table tbody tr:not(.spacer-row):hover {
   background-color: var(--bg-color-hover) !important;
 }
 
