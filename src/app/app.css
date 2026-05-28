@@ -214,11 +214,12 @@ input:checked + .slider:before {
   align-items: stretch;
 }
 
-/* Left Pane (Metadata) - Static, no scroll */
+/* Left Pane (Metadata) - Static, no scroll but has scrollbar space for layout alignment */
 .metadata-pane {
   flex: 0 0 990px;
   width: 990px;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
   border-right: 2px solid var(--border-color-active);
   background-color: var(--bg-color-card);
   display: flex;
@@ -229,11 +230,45 @@ input:checked + .slider:before {
 .scenarios-pane {
   flex: 1 1 auto;
   min-width: 0; /* Allow the pane to shrink and trigger horizontal scrollbar on smaller screens */
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
   background-color: var(--bg-color-card);
   display: flex;
   flex-direction: column;
+}
+
+/* Align scrollbar presence and heights in Firefox */
+.metadata-pane,
+.scenarios-pane {
+  scrollbar-width: thin;
+}
+
+.metadata-pane {
+  scrollbar-color: transparent transparent;
+}
+
+.scenarios-pane {
+  scrollbar-color: var(--border-color-active) rgba(4, 19, 36, 0.5);
+}
+
+/* WebKit custom scrollbar styling to enforce exact 10px height alignment */
+.metadata-pane::-webkit-scrollbar,
+.scenarios-pane::-webkit-scrollbar {
+  height: 10px;
+}
+
+.metadata-pane::-webkit-scrollbar-track,
+.metadata-pane::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.scenarios-pane::-webkit-scrollbar-track {
+  background: rgba(4, 19, 36, 0.5);
+}
+
+.scenarios-pane::-webkit-scrollbar-thumb {
+  background: var(--border-color-active);
+  border-radius: 4px;
 }
 
 /* Table general styles - Fixed Layout enforces explicit widths */
