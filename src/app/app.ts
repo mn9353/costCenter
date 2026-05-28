@@ -51,12 +51,7 @@ export class App implements OnInit {
     { id: 'v3', label: 'V3', compareLeft: 'Actual-2024', compareRight: 'RFC 1-2026' },
   ];
 
-  // Row Expand/Collapse State (Dictionary style for reliable change detection)
-  expandedCategories: { [key: string]: boolean } = {
-    'Consultancy': true,
-    'Training': true,
-    'IT Subscription': true
-  };
+  expandedCategories: { [key: string]: boolean } = {};
 
   // Cost Center Rows (Source data)
   costRows: CostRow[] = [];
