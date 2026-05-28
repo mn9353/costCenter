@@ -84,22 +84,15 @@ export class App implements OnInit, AfterViewInit {
   setupScrollSync() {
     const meta = this.metadataPaneRef.nativeElement;
     const scen = this.scenariosPaneRef.nativeElement;
-    let syncing = false;
 
+    // When right pane scrolls → mirror to left pane
     scen.addEventListener('scroll', () => {
-      if (!syncing) {
-        syncing = true;
-        meta.scrollTop = scen.scrollTop;
-        syncing = false;
-      }
+      meta.scrollTop = scen.scrollTop;
     });
 
+    // When left pane scrolls → mirror to right pane
     meta.addEventListener('scroll', () => {
-      if (!syncing) {
-        syncing = true;
-        scen.scrollTop = meta.scrollTop;
-        syncing = false;
-      }
+      scen.scrollTop = meta.scrollTop;
     });
   }
 
