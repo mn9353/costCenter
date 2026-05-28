@@ -420,6 +420,103 @@
         </section>
 
         <section class="docs-section">
+          <h3>How the Forecasts (RFCs) are Calculated</h3>
+          <p>
+            An RFC is not just a guess. It is a formula that combines <strong>real spending (Actuals)</strong> with our <strong>remaining plans (Forecasts)</strong> as the year progresses:
+          </p>
+          <div class="calculation-cards">
+            <div class="calc-card">
+              <div class="calc-header">RFC 1 (March Review)</div>
+              <div class="calc-formula">
+                <span class="calc-part actuals">3 Months Actuals</span>
+                <span class="calc-plus">+</span>
+                <span class="calc-part forecast">9 Months Forecast</span>
+              </div>
+              <p class="calc-text">We take the actual money spent from January to March, and combine it with our original guesses for April through December.</p>
+            </div>
+
+            <div class="calc-card">
+              <div class="calc-header">RFC 2 (June Mid-Year)</div>
+              <div class="calc-formula">
+                <span class="calc-part actuals">6 Months Actuals</span>
+                <span class="calc-plus">+</span>
+                <span class="calc-part forecast">6 Months Forecast</span>
+              </div>
+              <p class="calc-text">Our crucial mid-year review. We use the real spending from January to June, and adjust our plans for the second half of the year.</p>
+            </div>
+
+            <div class="calc-card">
+              <div class="calc-header">RFC 3 (September Review)</div>
+              <div class="calc-formula">
+                <span class="calc-part actuals">9 Months Actuals</span>
+                <span class="calc-plus">+</span>
+                <span class="calc-part forecast">3 Months Forecast</span>
+              </div>
+              <p class="calc-text">We have a very clear picture by autumn. We use 9 months of real data and only forecast the final 3 months of the year.</p>
+            </div>
+
+            <div class="calc-card">
+              <div class="calc-header">RFC 4 (December Close)</div>
+              <div class="calc-formula">
+                <span class="calc-part actuals">12 Months Actuals</span>
+                <span class="calc-plus">+</span>
+                <span class="calc-part forecast">0 Months Forecast</span>
+              </div>
+              <p class="calc-text">Right before we close the year. This is almost entirely actual data, locking in the final results.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h3>Understanding Variance & the Comparison Columns (V1, V2, V3)</h3>
+          <p>
+            <strong>Variance</strong> measures the difference between two scenario columns to see if we are on track, overspending, or saving money:
+          </p>
+          <div class="formula-strip">
+            <span class="formula-box">Variance</span>
+            <span class="formula-operator">=</span>
+            <span class="formula-box left-sc">Left Column</span>
+            <span class="formula-operator">-</span>
+            <span class="formula-box right-sc">Right Column</span>
+          </div>
+
+          <div class="variance-color-explanation">
+            <div class="var-badge-explain">
+              <span class="variance-badge pos" style="min-width: 50px;">+12k</span>
+              <p><strong>Favorable Variance (Green)</strong>: We spent <strong>less</strong> than our forecast. This represents cost savings!</p>
+            </div>
+            <div class="var-badge-explain">
+              <span class="variance-badge neg" style="min-width: 50px;">-5k</span>
+              <p><strong>Unfavorable Variance (Red)</strong>: We spent <strong>more</strong> than our forecast. This represents an overspend.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 16px;">
+            On the dashboard, we have three predefined variance columns (<strong>V1</strong>, <strong>V2</strong>, and <strong>V3</strong>) to help analyze performance across different cycles:
+          </p>
+          
+          <div class="variance-grid">
+            <div class="variance-card">
+              <h4>V1 — Forecast Accuracy Test</h4>
+              <div class="var-comparison">Actual 2026 vs RFC 3 2025</div>
+              <p>Compares our final spending in 2026 with the forecast we set in late 2025. It answers: <em>"How accurate was our forecast from a year ago?"</em></p>
+            </div>
+            
+            <div class="variance-card">
+              <h4>V2 — Yearly Baseline Shift</h4>
+              <div class="var-comparison">Actual 2025 vs RFC 1 2026</div>
+              <p>Compares our final spending in 2025 with our initial target for 2026. It answers: <em>"How does our new target compare to what we actually spent last year?"</em></p>
+            </div>
+
+            <div class="variance-card">
+              <h4>V3 — Two-Year Trend Check</h4>
+              <div class="var-comparison">Actual 2024 vs RFC 1 2026</div>
+              <p>Compares our actual spending from two years ago with our current targets. It answers: <em>"Are we expanding or reducing our budgets over a longer two-year cycle?"</em></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
           <h3>Key Features of the Dashboard</h3>
           <p>
             Here is a quick summary of the features and tools you can interact with on the dashboard:
