@@ -1223,3 +1223,25 @@ input:checked + .slider:before {
   vertical-align: middle !important;
   padding: 24px !important;
 }
+
+/* Column Resizing */
+.header-sub th {
+  position: relative; /* Ensure resize handle is positioned relative to cell */
+}
+
+.col-resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 100;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.col-resize-handle:hover, .col-resize-handle:active {
+  background-color: var(--border-color-active) !important;
+  box-shadow: 0 0 4px var(--accent-teal);
+}

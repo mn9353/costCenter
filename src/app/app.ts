@@ -535,4 +535,57 @@ export class App implements OnInit {
     this.draggedColIndex = null;
     this.dragOverColIndex = null;
   }
+
+  // Column Widths state for left metadata columns (columns 1 to 8)
+  colWidths: { [key: string]: number } = {
+    col1: 140,
+    col2: 90,
+    col3: 90,
+    col4: 140,
+    col5: 90,
+    col6: 90,
+    col7: 100,
+    col8: 180
+  };
+
+  get metadataPaneWidth(): number {
+    return this.colWidths['col1'] +
+           this.colWidths['col2'] +
+           this.colWidths['col3'] +
+           this.colWidths['col4'] +
+           this.colWidths['col5'] +
+           this.colWidths['col6'] +
+           this.colWidths['col7'] +
+           this.colWidths['col8'];
+  }
+
+  private activeColId: string | null = null;
+  private startX = 0;
+  private startWidth = 0;
+
+  onResizeStart(event: MouseEvent, colId: string) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.activeColId = colId;
+    this.startX = event.clientX;
+    this.startWidth = this.colWidths[colId];
+
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      if (this.activeColId) {
+        const deltaX = moveEvent.clientX - this.startX;
+        const newWidth = Math.max(60, this.startWidth + deltaX); // min 60px
+        this.colWidths[this.activeColId] = newWidth;
+      }
+    };
+
+    const onMouseUp = () => {
+      this.activeColId = null;
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }
 }
+
