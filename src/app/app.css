@@ -210,6 +210,7 @@ input:checked + .slider:before {
   height: fit-content;
   background-color: transparent;
   overflow: hidden;
+  align-items: flex-start; /* Prevent vertical stretching due to right-pane scrollbars */
 }
 
 /* Left Pane (Metadata) - Static, no scroll */
